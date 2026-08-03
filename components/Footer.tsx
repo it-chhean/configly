@@ -2,11 +2,11 @@ import React from 'react'
 
 const Footer = () => {
   return (
-    <div className='border-t border-stone-300 text-muted'>
-      <div className="mx-auto flex max-w-5xl flex-col items-start justify-between gap-2 px-6 py-6 text-xs text-muted-foreground sm:flex-row sm:items-center">
+    <div className='border-t text-muted'>
+      <div className="mx-auto flex max-w-5xl flex-col items-center justify-between gap-2 px-6 py-6 text-xs text-muted-foreground sm:flex-row sm:items-start">
         <div>
           <p className='text-center sm:text-left'>
-            Convertor.io made by
+            Converter.io made by
             <a href="https://github.com/it-chhean" className='ml-1 hover:underline'>@it-chhean</a>
           </p>
         </div>
@@ -17,7 +17,7 @@ const Footer = () => {
           <div>
             <a href="" className='hover:underline'>Helps</a>
           </div>
-          <div>©2026 Convertor</div>
+          <div>©2026 Converter</div>
         </div>
       </div>
     </div>

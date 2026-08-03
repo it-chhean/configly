@@ -6,7 +6,7 @@ const Navbar = () => {
     <header>
       <nav className='mx-auto flex h-22 max-w-5xl items-center justify-between px-6'>
         <div>
-          <h2 className='text-base font-base'>Convertor.io</h2>
+          <p className='text-lg font-normal'>Converter.io</p>
         </div>
         <div className='flex items-center '>
           <ul className='hidden sm:flex gap-4 mr-4 text-sm cursor-pointer'>

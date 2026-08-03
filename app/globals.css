@@ -89,6 +89,10 @@
   --color-popover: var(--popover);
   --color-card-foreground: var(--card-foreground);
   --color-card: var(--card);
+  --color-neutral-400: #d2deef;
+  --color-neutral-500: #94a3b8;
+  --color-neutral-600: #64748b;
+  --color-sky-800: #2563eb;
   --radius-sm: calc(var(--radius) * 0.6);
   --radius-md: calc(var(--radius) * 0.8);
   --radius-lg: var(--radius);
