@@ -2,8 +2,8 @@ import React from 'react'
 
 const Footer = () => {
   return (
-    <div className='border-t border-stone-300'>
-      <div className='max-w-6xl mx-auto flex flex-col sm:flex-row gap-3 sm:gap-0 justify-between items-center px-4 sm:px-6 lg:px-8 py-6 text-subtitle text-muted'>
+    <div className='border-t border-stone-300 text-muted'>
+      <div className="mx-auto flex max-w-5xl flex-col items-start justify-between gap-2 px-6 py-6 text-xs text-muted-foreground sm:flex-row sm:items-center">
         <div>
           <p className='text-center sm:text-left'>
             Convertor.io made by
@@ -12,10 +12,10 @@ const Footer = () => {
         </div>
         <div className='flex gap-4'>
           <div>
-            <a href="">Docs</a>
+            <a href="" className='hover:underline'>Docs</a>
           </div>
           <div>
-            <a href="">Helps</a>
+            <a href="" className='hover:underline'>Helps</a>
           </div>
           <div>©2026 Convertor</div>
         </div>

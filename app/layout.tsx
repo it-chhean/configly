@@ -32,7 +32,7 @@ export default function RootLayout({
     >
     <body className="">
       <Navbar/>
-        <main className="min-h-screen max-w-6xl mx-auto flex flex-col px-4 sm:px-6 lg:px-8">
+        <main className="mx-auto w-full max-w-5xl flex-1 px-6">
           <HeroSection/>
           {/* {children} */}
         </main>
