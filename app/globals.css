@@ -5,10 +5,12 @@
   --background: #ffffff;
   --foreground: #171717;
 
-  /* Typography */
-  --text-title: 12px;
-  --text-subtitle: 10px;
-  --text-muted: #393a3a;
+  /* Typography — fluid sizes: clamp(min, preferred, max) */
+  --text-title: clamp(1rem, 0.9rem + 0.5vw, 1.25rem);       /* ~16px → ~20px */
+  --text-subtitle: clamp(0.8rem, 0.75rem + 0.25vw, 0.9375rem); /* ~13px → ~15px */
+
+  --text-primary: #111827;
+  --text-muted: #7a7a7a;
 }
 
 @theme inline {
@@ -35,4 +37,5 @@ body {
   background-color: var(--background);
   color: var(--foreground);
   font-family: var(--font-sans, Arial, Helvetica, sans-serif);
+  font-size: clamp(1rem, 0.95rem + 0.25vw, 1.0625rem); /* base body text, ~16px → ~17px */
 }
