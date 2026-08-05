@@ -1,5 +1,5 @@
 import React from 'react'
-import { DottedGlowBackground } from './ui/dotted-glow-background';
+import { DottedGlowBackground } from '../ui/dotted-glow-background';
 
 const HeroSection = () => {
   return (
@@ -26,8 +26,8 @@ const HeroSection = () => {
             <span className="font-bold dark:text-white">Configuration File</span>
           </h2>
           <p className="mt-4 max-w-lg text-left text-base text-muted dark:text-neutral-300">
-            Unlock premium components, advanced animations, and exclusive
-            templates to build stunning modern interfaces.
+            Fast, reliable configuration file conversion across YAML, JSON, Properties, and XML.
+             No uploads, no servers—your data is processed locally in your browser.
           </p>
           {/* btn */}
           <div className='flex gap-2'>

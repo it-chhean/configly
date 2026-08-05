@@ -20,4 +20,10 @@ export const features: Feature[] = [
     description: "Extensible Markup Language (.xml) for Maven pom.xml, SOAP services, and enterprise apps",
     icon: CodeXml,
    },
+   {
+    id: 4,
+    title: "Spring",
+    description: "Extensible Markup Language (.xml) for Maven pom.xml, SOAP services, and enterprise apps",
+    icon: CodeXml,
+   },  
 ]
