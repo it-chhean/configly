@@ -1,29 +1,23 @@
 import { Feature } from "@/types";
-import { Webhook, Palette, Zap, Settings, FileCode, CodeXml } from "lucide-react";
+import { Zap, Lock, Code } from "lucide-react";
 
 export const features: Feature[] = [
    {
     id: 1,
-    title: "Properties",
-    description: "Java properties files (.properties) for Spring Boot, Maven, and enterprise Java applications",
-    icon: Settings,
+    title: "100% Private & Secure",
+    description: "All conversions happen in your browser. Your configuration files never leave your device - no server uploads, complete privacy.",
+    icon: Lock,
    },
    {
     id: 2,
-    title: "Yaml",
-    description: "YAML configuration files (.yml, .yaml) for Kubernetes, Docker Compose, and CI/CD pipelines",
-    icon: FileCode,
+    title: "Developer Friendly",
+    description: "Built for developers by developers. Support for all major configuration formats used in modern software development.",
+    icon: Code,
    },
    {
     id: 3,
-    title: "Xml",
-    description: "Extensible Markup Language (.xml) for Maven pom.xml, SOAP services, and enterprise apps",
-    icon: CodeXml,
-   },
-   {
-    id: 4,
-    title: "Spring",
-    description: "Extensible Markup Language (.xml) for Maven pom.xml, SOAP services, and enterprise apps",
-    icon: CodeXml,
-   },  
+    title: "Instant Conversion",
+    description: "See results in real-time as you type. No waiting, no processing delays - instant conversion using client-side JavaScript.",
+    icon: Zap,
+   }  
 ]

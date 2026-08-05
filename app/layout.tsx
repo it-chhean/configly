@@ -5,6 +5,7 @@ import Navbar from "@/components/layout/navbar";
 import Footer from "@/components/layout/footer";
 import HeroSection from "@/components/sections/hero-section";
 import FeaturesSection from "@/components/sections/feature-section";
+import { FaqSection } from "@/components/sections/faq-section";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -36,7 +37,8 @@ export default function RootLayout({
         <main className="mx-auto w-full max-w-5xl flex-1 px-6">
           <HeroSection/>
           {/* {children} */}
-        <FeaturesSection/>
+          <FeaturesSection/>
+          <FaqSection/>
         </main>
       <Footer/>
     </body>
