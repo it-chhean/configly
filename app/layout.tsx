@@ -1,11 +1,11 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
-import Navbar from "@/components/layout/navbar";
-import Footer from "@/components/layout/footer";
-import HeroSection from "@/components/sections/hero-section";
-import FeaturesSection from "@/components/sections/feature-section";
-import { FaqSection } from "@/components/sections/faq-section";
+import HeroSection from "@/components/sections/HeroSection";
+import FeaturesSection from "@/components/sections/FeatureSection";
+import FAQSection from "@/components/sections/FAQSection";
+import Footer from "@/components/layout/Footer";
+import Navbar from "@/components/layout/Navbar";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -38,7 +38,7 @@ export default function RootLayout({
           <HeroSection/>
           {/* {children} */}
           <FeaturesSection/>
-          <FaqSection/>
+          <FAQSection/>
         </main>
       <Footer/>
     </body>

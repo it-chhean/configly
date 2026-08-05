@@ -1,12 +1,12 @@
 import { features } from "@/data/feature";
-import FeatureCard from "../feature/feature-card";
+import FeatureCard from "../feature/FeatureCard";
 
 export default function FeaturesSection() {
   return (
-    <section className="my-10">
+    <section className="mb-20">
       <div className="mb-8">
         <h3 className="text-lg font-medium">
-          Why Choose EnterPurpose Config Converter?
+          Why Choose Converter Config file?
         </h3>
 
         <p className="mt-2 text-sm text-muted">

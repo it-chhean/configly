@@ -7,7 +7,7 @@ const Footer = () => {
         <div>
           <p className='text-center sm:text-left'>
             Converter.io made by
-            <a href="https://github.com/it-chhean" className='ml-1 hover:underline'>@it-chhean</a>
+            <a href="https://github.com/it-chhean" target='_blank' className='ml-1 hover:underline'>@it-chhean</a>
           </p>
         </div>
         <div className='flex gap-4'>

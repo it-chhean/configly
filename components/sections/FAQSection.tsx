@@ -8,9 +8,9 @@ interface Faq1Props {
   className?: string;
 }
 
-const FaqSection = ({items = faqItems,className,}: Faq1Props) => {
+const FAQSection = ({items = faqItems,className,}: Faq1Props) => {
   return (
-    <section className={cn("py-20", className)}>
+    <section className={cn("mb-20", className)}>
       <div className="container">
         <div>
          <div className="mb-8">
@@ -39,4 +39,4 @@ const FaqSection = ({items = faqItems,className,}: Faq1Props) => {
   );
 };
 
-export { FaqSection };
+export default FAQSection;
