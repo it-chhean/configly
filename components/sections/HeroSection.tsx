@@ -1,5 +1,6 @@
 import React from 'react'
 import { DottedGlowBackground } from '../ui/dotted-glow-background';
+import Link from 'next/link';
 
 const HeroSection = () => {
   return (
@@ -31,8 +32,18 @@ const HeroSection = () => {
           </p>
           {/* btn */}
           <div className='flex gap-2'>
-            <button className=' px-3 mt-4 py-2 bg-black text-white items-center hover:underline text-sm '>Get Started</button>
-            <button className=' px-3 mt-4 py-2 bg-white border text-primary items-center hover:underline text-sm '>View docs</button>
+          <Link
+            href="/tools"
+            className=' px-3 mt-4 py-2 bg-black text-white items-center hover:underline text-sm '
+          >
+            Get Started
+          </Link>
+          <Link
+            href="/document"
+            className=' px-3 mt-4 py-2 bg-white text-primary border items-center hover:underline text-sm '
+          >
+            View Docs
+          </Link>
           </div>
         </div>
       </div>

@@ -17,7 +17,7 @@ export default function ArrowLink({
             viewBox="0 0 10 10"
             fill="none"
             xmlns="http://www.w3.org/2000/svg"
-            className="inline-block flex-shrink-0 transition-transform text-primary duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
+            className="inline-block flex-shrink-0 transition-transform text-primary duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
             aria-hidden="true"
          >
             <path

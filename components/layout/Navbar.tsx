@@ -1,3 +1,4 @@
+import Link from "next/link"
 import ArrowLink from "../ui/ArrowLink"
 
 const Navbar = () => {
@@ -5,12 +6,10 @@ const Navbar = () => {
     <header className="border-b">
       <nav className='mx-auto flex h-14 max-w-5xl items-center justify-between px-6'>
         <ArrowLink href="/" name="Converter.io"/>
-        <div className='flex items-center '>
-          <ul className='hidden sm:flex gap-4 mr-4 text-sm cursor-pointer'>
-            <a href='#' className='no-underline hover:underline'>Document</a>
+        <div className='flex items-center sm:flex gap-4 mr-4 text-sm cursor-pointer'>
+            <Link href="/document" className='no-underline hover:underline'>Documents</Link>
             <a href='#' className='no-underline hover:underline'>Price</a>
-          </ul>
-          <button className='px-3 py-2 bg-black text-white items-center hover:underline text-sm '>
+          <button className='px-3 py-2 hidden sm:flex bg-black text-white items-center hover:underline text-sm '>
             Sign In
           </button>
         </div>

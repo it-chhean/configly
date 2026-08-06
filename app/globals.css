@@ -126,6 +126,7 @@ body {
   bottom: -2px;
   width: 100%;
   height: 1px;
+  opacity: 70%;
   background: #111827;
 
   transform: scaleX(0);
