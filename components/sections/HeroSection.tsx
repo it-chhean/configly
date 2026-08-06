@@ -19,7 +19,7 @@ const HeroSection = () => {
         speedScale={1}
       />
  
-      <div className="relative z-10 w-full space-y-6 py-22 md:flex-row">
+      <div className="relative z-10 w-full space-y-6 mt-20 mb-30 md:flex-row">
         <div>
           <h2 className="text-left text-4xl font-normal tracking-tight text-j-900 sm:text-5xl  dark:text-neutral-400">
             Free convert your{" "}

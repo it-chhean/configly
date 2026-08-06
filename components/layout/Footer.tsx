@@ -2,7 +2,7 @@ import React from 'react'
 
 const Footer = () => {
   return (
-    <div className='border-t text-muted'>
+    <footer className='border-t text-muted'>
       <div className="mx-auto flex max-w-5xl flex-col items-center justify-between gap-2 px-6 py-6 text-xs text-muted-foreground sm:flex-row sm:items-start">
         <div>
           <p className='text-center sm:text-left'>
@@ -20,7 +20,7 @@ const Footer = () => {
           <div>©2026 Converter</div>
         </div>
       </div>
-    </div>
+    </footer>
   )
 }
 

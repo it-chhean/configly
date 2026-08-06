@@ -1,9 +1,6 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
-import HeroSection from "@/components/sections/HeroSection";
-import FeaturesSection from "@/components/sections/FeatureSection";
-import FAQSection from "@/components/sections/FAQSection";
 import Footer from "@/components/layout/Footer";
 import Navbar from "@/components/layout/Navbar";
 
@@ -32,13 +29,10 @@ export default function RootLayout({
       lang="en"
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
     >
-    <body className="">
+    <body className="h-screen scroll-smooth">
       <Navbar/>
         <main className="mx-auto w-full max-w-5xl flex-1 px-6">
-          <HeroSection/>
-          {/* {children} */}
-          <FeaturesSection/>
-          <FAQSection/>
+          {children}
         </main>
       <Footer/>
     </body>

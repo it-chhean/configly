@@ -3,7 +3,7 @@ import FeatureCard from "../feature/FeatureCard";
 
 export default function FeaturesSection() {
   return (
-    <section className="mb-20">
+    <section className="mb-30">
       <div className="mb-8">
         <h3 className="text-lg font-medium">
           Why Choose Converter Config file?

@@ -1,13 +1,10 @@
-import { headers } from 'next/headers'
-import React from 'react'
+import ArrowLink from "../ui/ArrowLink"
 
 const Navbar = () => {
   return (
-    <header>
-      <nav className='mx-auto flex h-22 max-w-5xl items-center justify-between px-6'>
-        <div>
-          <p className='text-lg font-normal'>Converter.io</p>
-        </div>
+    <header className="border-b">
+      <nav className='mx-auto flex h-14 max-w-5xl items-center justify-between px-6'>
+        <ArrowLink href="/" name="Converter.io"/>
         <div className='flex items-center '>
           <ul className='hidden sm:flex gap-4 mr-4 text-sm cursor-pointer'>
             <a href='#' className='no-underline hover:underline'>Document</a>

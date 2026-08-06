@@ -1,11 +1,14 @@
-import React from 'react'
+import HeroSection from "@/components/sections/HeroSection";
+import FeaturesSection from "@/components/sections/FeatureSection";
+import FAQSection from "@/components/sections/FAQSection";
 
-const page = () => {
+export default function HomePage() {
   return (
-    <div>
-      <h1>viraType point external pointer a fist node</h1>
-    </div>
+	<>
+		<HeroSection/>
+		<FeaturesSection/>
+		<FAQSection/>
+	</>
   )
 }
 
-export default page
