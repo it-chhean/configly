@@ -7,15 +7,13 @@ import {
   Trash,
   Check,
   Download,
-  Sparkles,
   ArrowRightLeft,
   AlertCircle,
-  FileCode2,
 } from "lucide-react";
 import Link from "next/link";
 import { convertFormat, type FormatLanguage } from "@/lib/converter";
 
-const LANGUAGES: FormatLanguage[] = ["Property", "Yaml", "Xml"];
+const LANGUAGES: FormatLanguage[] = ["Property", "Yaml", "Xml", "Json", "Toml", "Env"];
 
 const SAMPLE_PROPERTIES = `# Server Configuration
 server.port=8080
@@ -93,7 +91,6 @@ const InputField: FC = () => {
       setCopied(true);
       setTimeout(() => setCopied(false), 2000);
     } catch {
-      // Fallback if clipboard API is blocked
       const textArea = document.createElement("textarea");
       textArea.value = outputCode;
       document.body.appendChild(textArea);
@@ -111,6 +108,9 @@ const InputField: FC = () => {
       Property: "properties",
       Yaml: "yaml",
       Xml: "xml",
+      Json: "json",
+      Toml: "toml",
+      Env: "env",
     };
     const blob = new Blob([outputCode], { type: "text/plain;charset=utf-8" });
     const url = URL.createObjectURL(blob);
@@ -132,16 +132,49 @@ const InputField: FC = () => {
   };
 
   const handleLoadSample = () => {
-    if (fromLang === "Property") {
-      setInputCode(SAMPLE_PROPERTIES);
-    } else if (fromLang === "Yaml") {
-      setInputCode(
-        `server:\n  port: 8080\n  host: 127.0.0.1\nspring:\n  application:\n    name: converter-service`
-      );
-    } else {
-      setInputCode(
-        `<?xml version="1.0" encoding="UTF-8"?>\n<configuration>\n  <server>\n    <port>8080</port>\n  </server>\n</configuration>`
-      );
+    switch (fromLang) {
+      case "Property":
+        setInputCode(SAMPLE_PROPERTIES);
+        break;
+      case "Yaml":
+        setInputCode(
+          `server:\n  port: 8080\n  host: 127.0.0.1\n  servlet:\n    context-path: /api/v1\nspring:\n  application:\n    name: converter-service\n  profiles:\n    active: development`
+        );
+        break;
+      case "Xml":
+        setInputCode(
+          `<?xml version="1.0" encoding="UTF-8"?>\n<configuration>\n  <server>\n    <port>8080</port>\n    <host>127.0.0.1</host>\n  </server>\n  <spring>\n    <application>\n      <name>converter-service</name>\n    </application>\n  </spring>\n</configuration>`
+        );
+        break;
+      case "Json":
+        setInputCode(
+          JSON.stringify(
+            {
+              server: {
+                port: 8080,
+                host: "127.0.0.1",
+                servlet: { "context-path": "/api/v1" },
+              },
+              spring: {
+                application: { name: "converter-service" },
+                profiles: { active: "development" },
+              },
+            },
+            null,
+            2
+          )
+        );
+        break;
+      case "Toml":
+        setInputCode(
+          `[server]\nport = 8080\nhost = "127.0.0.1"\n\n[server.servlet]\ncontext-path = "/api/v1"\n\n[spring.application]\nname = "converter-service"`
+        );
+        break;
+      case "Env":
+        setInputCode(
+          `SERVER_PORT=8080\nSERVER_HOST=127.0.0.1\nSERVER_SERVLET_CONTEXT_PATH=/api/v1\nSPRING_APPLICATION_NAME=converter-service\nSPRING_PROFILES_ACTIVE=development`
+        );
+        break;
     }
   };
 
@@ -156,11 +189,11 @@ const InputField: FC = () => {
           <button
             type="button"
             onClick={handleSwapLanguages}
-            className="flex items-center gap-1.5 px-3 py-1.5 text-xs font-medium bg-stone-100 hover:bg-stone-200 text-stone-700  transition-colors"
+            className="flex items-center gap-1.5 px-3 py-1.5 text-xs font-medium bg-stone-100 hover:bg-stone-200 text-primary transition-colors"
             title="Swap source and target languages"
           >
             <ArrowRightLeft size={14} />
-            Swap ({fromLang} ↔ {toLang})
+            Swap ({fromLang} - {toLang})
           </button>
         </div>
         {errorMsg && (
@@ -172,13 +205,13 @@ const InputField: FC = () => {
       </div>
 
       {/* Editors Container */}
-      <div className="relative w-full flex flex-col lg:flex-row gap-4 lg:gap-0 border border overflow-hidden bg-white">
+      <div className="relative w-full flex flex-col lg:flex-row gap-4 lg:gap-0 border border-stone-200 overflow-hidden bg-white">
         {/* Left Panel: Input Editor */}
-        <div className="flex flex-col flex-1 h-[580px] bg-white text-primary border-b lg:border-b-0 lg:border-r overflow-hidden">
+        <div className="flex flex-col flex-1 h-[580px] bg-white text-primary border-b lg:border-b-0 lg:border-r border-stone-200 overflow-hidden">
           {/* Toolbar */}
-          <div className="flex items-center justify-between p-2 px-3 border-b border-stone-200 bg-white text-sm text-primary shrink-0">
+          <div className="flex items-center justify-between p-2 px-3 border-b border-stone-200 text-sm text-primary shrink-0">
             <div className="flex items-center gap-2">
-              <span className="text-sm font-medium text-muted mr-1">
+              <span className="text-sm text-primary/75 mr-1">
                 Source:
               </span>
               <div className="relative">
@@ -197,7 +230,7 @@ const InputField: FC = () => {
                   />
                 </button>
                 {fromLangOpen && (
-                  <div className="absolute left-0 top-full z-50 mt-1 w-32 bg-white cursor-pointer border border-stone-200 rounded shadow-lg py-1">
+                  <div className="absolute left-0 top-full z-50 mt-1 w-36 bg-white cursor-pointer border border-stone-200 rounded shadow-lg py-1">
                     {LANGUAGES.map((l) => (
                       <div
                         key={l}
@@ -205,8 +238,8 @@ const InputField: FC = () => {
                           setFromLang(l);
                           setFromLangOpen(false);
                         }}
-                        className={`px-3 py-1.5 text-xs hover:bg-stone-50 text-primary ${
-                          fromLang === l ? "bg-stone-100" : ""
+                        className={`px-3 py-1.5 text-xs hover:bg-stone-100 text-primary ${
+                          fromLang === l ? "font-semibold bg-stone-50" : ""
                         }`}
                       >
                         {l}
@@ -216,11 +249,11 @@ const InputField: FC = () => {
                 )}
               </div>
             </div>
-            <div className="flex items-center gap-3 ">
+            <div className="flex items-center gap-3 text-primary/75">
               <button
                 type="button"
                 onClick={() => setInputCode("")}
-                className="hover:text-primary  teztransition-colors p-1 text-primary/75 cursor-pointer"
+                className="hover:text-primary transition-colors p-1"
                 title="Clear input"
               >
                 <Trash size={15} />
@@ -229,7 +262,7 @@ const InputField: FC = () => {
           </div>
 
           {/* Textarea Area */}
-          <div className="relative z-10 flex flex-1 px-3 min-h-0 overflow-y-auto bg-white">
+          <div className="relative z-10 flex flex-1 px-3 min-h-0 overflow-y-auto bg-stone-50/30">
             <textarea
               ref={inputTextareaRef}
               value={inputCode}
@@ -245,7 +278,7 @@ const InputField: FC = () => {
           </div>
 
           {/* Input Status bar */}
-          <div className="flex items-center justify-between px-3 py-1.5 border-t bg-white text-stone-500 font-sans text-xs shrink-0">
+          <div className="flex items-center justify-between px-3 py-1.5 border-t border-stone-200 text-muted font-sans text-xs shrink-0">
             <span>
               Ln {inputCursor.line}, Col {inputCursor.col}
             </span>
@@ -254,11 +287,11 @@ const InputField: FC = () => {
         </div>
 
         {/* Right Panel: Output Editor */}
-        <div className="flex flex-col flex-1 h-[580px] bg-white text-muted overflow-hidden">
+        <div className="flex flex-col flex-1 h-[580px] bg-white text-primary overflow-hidden">
           {/* Output Toolbar */}
           <div className="flex items-center justify-between p-2 px-3 border-b bg-white text-sm text-primary shrink-0">
             <div className="flex items-center gap-2">
-              <span className="text-sm font-medium text-muted mr-1">
+              <span className="text-sm  text-primary/75 mr-1">
                 Target:
               </span>
               <div className="relative">
@@ -268,7 +301,7 @@ const InputField: FC = () => {
                     setToLangOpen((o) => !o);
                     setFromLangOpen(false);
                   }}
-                  className="flex items-center gap-1 cursor-pointer px-3 py-1.5 bg-primary text-white text-sm font-medium hover:bg-primary/90 transition-colors"
+                  className="flex items-center gap-1 cursor-pointer px-3 py-1.5 bg-primary text-white text-sm font-medium  hover:bg-primary/90 transition-colors"
                 >
                   {toLang}
                   <ChevronDown
@@ -277,7 +310,7 @@ const InputField: FC = () => {
                   />
                 </button>
                 {toLangOpen && (
-                  <div className="absolute left-0 top-full z-50 mt-1 w-32 bg-white cursor-pointer border rounded shadow-lg py-1 ">
+                  <div className="absolute left-0 top-full z-50 mt-1 w-36 bg-white cursor-pointer border rounded shadow-lg py-1">
                     {LANGUAGES.map((l) => (
                       <div
                         key={l}
@@ -285,8 +318,8 @@ const InputField: FC = () => {
                           setToLang(l);
                           setToLangOpen(false);
                         }}
-                        className={`px-3 py-1.5 text-xs hover:bg-stone-50 text-primary ${
-                          toLang === l ? "bg-stone-100" : ""
+                        className={`px-3 py-1.5 text-xs hover:bg-stone-100 text-primary ${
+                          toLang === l ? "font-semibold bg-stone-100 text-primary" : ""
                         }`}
                       >
                         {l}
@@ -297,16 +330,16 @@ const InputField: FC = () => {
               </div>
             </div>
 
-            <div className="flex items-center gap-3">
+            <div className="flex items-center gap-3 text-primary/75">
               <button
                 type="button"
                 onClick={handleCopyOutput}
                 disabled={!outputCode}
-                className="flex items-center gap-1 hover:text-primary transition-colors p-1 text-primary/75 cursor-pointer"
+                className="flex items-center gap-1 hover:text-primary transition-colors p-1 disabled:opacity-40"
                 title="Copy to clipboard"
               >
                 {copied ? (
-                  <span className="flex items-center gap-1 text-xs text-emerald-600 font-medium">
+                  <span className="flex items-center gap-1 text-xs text-emerald-400 font-medium">
                     <Check size={14} /> Copied!
                   </span>
                 ) : (
@@ -317,7 +350,7 @@ const InputField: FC = () => {
                 type="button"
                 onClick={handleDownload}
                 disabled={!outputCode}
-                className="hover:text-primary transition-colors p-1 text-primary/75 cursor-pointer"
+                className="hover:text-primary transition-colors p-1 disabled:opacity-40"
                 title="Download formatted file"
               >
                 <Download size={15} />
@@ -346,7 +379,6 @@ const InputField: FC = () => {
               Ln {outputCursor.line}, Col {outputCursor.col}
             </span>
             <div className="flex items-center gap-2">
-              <FileCode2 size={13} className="text-muted" />
               <span>{outputLineCount} lines</span>
             </div>
           </div>
@@ -357,7 +389,14 @@ const InputField: FC = () => {
       <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center py-2 bg-white gap-2">
         <div className="flex text-sm text-primary">
           <p className="flex gap-1 mt-2 text-muted items-center text-xs sm:text-sm">
-            Want to learn more about configuration file formats? You can find official resources.
+            Want to learn more about configuration file formats? 
+            <a
+              href="/document/#resource-link"
+              rel="noopener noreferrer"
+              className="text-primary hover:underline"
+            >
+              You can find official resources.
+            </a>
           </p>
         </div>
         <div>

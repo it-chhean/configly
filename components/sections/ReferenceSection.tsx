@@ -1,30 +1,63 @@
+import { ExternalLink } from "lucide-react";
+import { resources } from "../../data/reference";
+
 export default function ReferenceSection() {
-   return (
-      <section>
-         <div className="mb-8">
-            <h3 className="text-lg font-medium">
-               Check out these official resource
-            </h3>
-            <div className="mt-2 text-sm text-muted ">
-               <ul>
-                  <li className="hover:underline hover:text-primary duration-300">
-                     <a href="https://docs.docker.com/reference/compose-file/" target="_blank">Docker Compose</a>
-                  </li>
-                  <li className="hover:underline hover:text-primary duration-300">
-                     <a href="https://docs.spring.io/spring-boot/redirect.html?page=features#features.external-config" target="_blank">Spring Boot Config</a>
-                  </li>
-                  <li className="hover:underline hover:text-primary duration-300">
-                     <a href="https://docs.oracle.com/javase/8/docs/api/java/util/Properties.html" target="_blank">Java Properties</a>
-                  </li>
-                  <li className="hover:underline hover:text-primary duration-300">
-                     <a href="https://www.json.org/json-en.html" target="_blank">JSON.org</a>
-                  </li>
-                  <li className="hover:underline hover:text-primary duration-300">
-                     <a href="https://yaml.org/spec/1.2.2/" target="_blank">Yaml Specificaton</a>
-                  </li>
-               </ul>
-            </div>
-         </div>
-      </section>
-   );
+  return (
+    <section className="mt-12">
+      <div className=" border p-6">
+        <div>
+          <h3 className="text-lg font-medium">
+            Official Resources
+          </h3>
+
+          <p className="mt-1 text-sm text-muted">
+            Learn more about the configuration formats and tools supported
+            by Converter.io.
+          </p>
+        </div>
+
+        <div className="mt-5 grid gap-3 sm:grid-cols-2">
+          {resources.map((resource) => (
+            <a
+              key={resource.name}
+              href={resource.href}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="group flex items-center justify-between border p-4 transition-colors duration-200 hover:bg-muted/10"
+            >
+              <div>
+                <p className="text-sm font-medium group-hover:text-primary">
+                  {resource.name}
+                </p>
+
+                <p className="mt-1 text-xs text-muted">
+                  {resource.description}
+                </p>
+              </div>
+
+              <ExternalLink
+                size={15}
+                className="shrink-0 text-muted transition-colors group-hover:text-primary"
+                id="resource-link"
+              />
+            </a>
+          ))}
+        </div>
+      </div>
+        <div className="mt-4">
+          <p className="flex gap-1 mt-2 text-muted items-center text-xs sm:text-sm">
+            Suggestions or feedback? Please reach out to us on our{" "}
+            <a
+              href="/document/#resource-link"
+              rel="noopener noreferrer"
+              className="text-primary underline "
+            >
+            Pull Request 
+            </a>
+            are welcome!
+          </p>
+        
+        </div> 
+    </section>
+  );
 }

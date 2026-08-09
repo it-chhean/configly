@@ -1,11 +1,10 @@
 import OutputAndInputSection from '@/components/sections/OutputAndInputSection'
-import React from 'react'
 
 const page = () => {
   return (
-    <>
-    <OutputAndInputSection/>
-    </>
+    <section className="mx-auto w-full max-w-5xl my-10 flex-1 px-6">
+      <OutputAndInputSection/>
+    </section>
   )
 }
 

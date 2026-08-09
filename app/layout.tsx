@@ -31,9 +31,7 @@ export default function RootLayout({
     >
     <body className="h-screen scroll-smooth ">
       <Navbar/>
-        <main className="mx-auto w-full max-w-5xl flex-1 px-6">
-          {children}
-        </main>
+        {children}
       <Footer/>
     </body>
     </html>

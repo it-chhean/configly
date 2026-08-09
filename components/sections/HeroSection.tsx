@@ -1,4 +1,3 @@
-import React from 'react'
 import { DottedGlowBackground } from '../ui/dotted-glow-background';
 import Link from 'next/link';
 
@@ -36,10 +35,10 @@ const HeroSection = () => {
             href="/tools"
             className=' px-3 mt-4 py-2 bg-primary text-white items-center hover:underline text-sm '
           >
-            Get Started
+            Try it now
           </Link>
           <Link
-            href="/document"
+            href="/documents"
             className=' px-3 mt-4 py-2 bg-white text-primary border items-center hover:underline text-sm '
           >
             View Docs

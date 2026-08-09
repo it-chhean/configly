@@ -8,7 +8,6 @@ const OutputAndInputSection = () => {
         <h3 className="text-lg font-medium">
           Why Choose Converter Config file?
         </h3>
-
         <p className="mt-2 text-sm text-muted">
           Convert configuration files between popular formats with fast, secure, browser-based processing. No uploads, no servers, no data leaves your device.
         </p>

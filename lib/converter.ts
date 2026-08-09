@@ -1,7 +1,9 @@
 import * as yaml from "js-yaml";
 import { XMLParser, XMLBuilder } from "fast-xml-parser";
+import { parse as parseToml, stringify as stringifyToml } from "smol-toml";
+import dotenv from "dotenv";
 
-export type FormatLanguage = "Property" | "Yaml" | "Xml";
+export type FormatLanguage = "Property" | "Yaml" | "Xml" | "Json" | "Toml" | "Env";
 
 /**
  * Parses a string value into boolean, number, or raw string.
@@ -118,25 +120,42 @@ export function flattenObject(
 }
 
 /**
- * Converts Properties string to YAML string.
+ * Parses .env file contents into a nested JS object.
  */
-export function propertiesToYaml(propertiesText: string): string {
-  const obj = parseProperties(propertiesText);
-  if (Object.keys(obj).length === 0) return "";
-  return yaml.dump(obj, { indent: 2, lineWidth: -1, noRefs: true });
+export function parseEnv(input: string): Record<string, any> {
+  const parsed = dotenv.parse(input);
+  const result: Record<string, any> = {};
+
+  for (const [key, val] of Object.entries(parsed)) {
+    // If key contains underscores (e.g. SERVER_PORT or SPRING_APPLICATION_NAME), convert to path segments
+    const segments = key
+      .toLowerCase()
+      .split("_")
+      .filter(Boolean);
+
+    setDeepProperty(result, segments, parseValue(val));
+  }
+
+  return result;
 }
 
 /**
- * Converts YAML string to Properties string.
+ * Converts JS Object to .env file string.
  */
-export function yamlToProperties(yamlText: string): string {
-  if (!yamlText.trim()) return "";
-  const loaded = yaml.load(yamlText);
-  if (!loaded || typeof loaded !== "object") return "";
-
-  const flat = flattenObject(loaded);
+export function objectToEnv(obj: Record<string, any>): string {
+  const flat = flattenObject(obj);
   return Object.entries(flat)
-    .map(([k, v]) => `${k}=${v}`)
+    .map(([k, v]) => {
+      const envKey = k
+        .replace(/\[(\d+)\]/g, "_$1")
+        .replace(/\./g, "_")
+        .replace(/([a-z])([A-Z])/g, "$1_$2")
+        .toUpperCase();
+      const strVal = String(v ?? "");
+      const needsQuotes = /[\s#='"]/.test(strVal);
+      const finalVal = needsQuotes ? `"${strVal.replace(/"/g, '\\"')}"` : strVal;
+      return `${envKey}=${finalVal}`;
+    })
     .join("\n");
 }
 
@@ -159,13 +178,12 @@ export function objectToXml(obj: Record<string, any>, rootTag = "configuration")
     format: true,
     indentBy: "  ",
   });
-  // Wrap in root tag if not already wrapped
   const payload = Object.keys(obj).length === 1 ? obj : { [rootTag]: obj };
   return `<?xml version="1.0" encoding="UTF-8"?>\n` + builder.build(payload);
 }
 
 /**
- * Main converter handler supporting Property, Yaml, and Xml formats.
+ * Main converter handler supporting Property, Yaml, Xml, Json, Toml, and Env formats.
  */
 export function convertFormat(
   input: string,
@@ -184,7 +202,7 @@ export function convertFormat(
   try {
     let parsedObj: Record<string, any> = {};
 
-    // 1. Parse input to JS object
+    // 1. Parse input format to JS object
     if (fromLang === "Property") {
       parsedObj = parseProperties(input);
     } else if (fromLang === "Yaml") {
@@ -196,6 +214,17 @@ export function convertFormat(
       }
     } else if (fromLang === "Xml") {
       parsedObj = parseXml(input);
+    } else if (fromLang === "Json") {
+      const parsed = JSON.parse(input);
+      if (parsed && typeof parsed === "object") {
+        parsedObj = parsed;
+      } else {
+        return { success: false, result: "", error: "JSON must be an object or array" };
+      }
+    } else if (fromLang === "Toml") {
+      parsedObj = parseToml(input) as Record<string, any>;
+    } else if (fromLang === "Env") {
+      parsedObj = parseEnv(input);
     }
 
     // 2. Format JS object to target format
@@ -209,6 +238,12 @@ export function convertFormat(
         .join("\n");
     } else if (toLang === "Xml") {
       output = objectToXml(parsedObj);
+    } else if (toLang === "Json") {
+      output = JSON.stringify(parsedObj, null, 2);
+    } else if (toLang === "Toml") {
+      output = stringifyToml(parsedObj);
+    } else if (toLang === "Env") {
+      output = objectToEnv(parsedObj);
     }
 
     return { success: true, result: output.trim() };
@@ -216,7 +251,7 @@ export function convertFormat(
     return {
       success: false,
       result: "",
-      error: err.message || "Failed to convert input string format.",
+      error: err.message || "Failed to convert input format.",
     };
   }
 }

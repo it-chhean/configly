@@ -2,13 +2,13 @@ import { Article } from "@/types";
 import { ChevronRight, ShieldAlert } from "lucide-react";
 
 export const aboutItem: Article = {
-   title: "Why Converter Config Files?",
+   title: "What is Converter?",
    subtitle: "Different tools and platforms require different configuration formats. When migrating between platforms, adopting new tools, or standardizing your team's configuration approach, you often need to convert between formats. This tool makes that process instant and error-free. ",
    icon: ChevronRight
 }
 
 export const howItWork: Article = {
-   title: "How It Work?",
+   title: "How Converter Works?",
    subtitle: "Paste your configuration text into the input panel. The tool automatically detects whether your input is JSON, YAML, TOML, or INI. Select your desired output format from the dropdown, click Convert (or press Ctrl+Enter), and get your converted configuration with syntax highlighting. Copy it to your clipboard or download it as a file with the correct extension. ",
    icon: ChevronRight 
 }

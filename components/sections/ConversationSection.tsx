@@ -1,6 +1,6 @@
 import { Check } from 'lucide-react'
 
-const formats = ["Property", "Yaml", "Xml"];
+const formats = ["Property", "Yaml", "Xml", "Json", "Toml", "Env"];
 
 export default function ConversationSection() {
   return (
@@ -9,14 +9,14 @@ export default function ConversationSection() {
           <h3 className="text-lg font-medium">
             All Configuration Format Conversions
           </h3>
-          <p className="mt-2 text-sm text-muted">
+          <p className="mt-2  text-sm text-muted">
             Click any cell to convert between formats. All 42 conversion combinations are available for free.
           </p>
       </div>
       <table className="border-collapse border w-full">
         <thead>
           <tr className="bg-gray-50">
-            <th className="border py-3 text-left text-sm font-medium"></th>
+            <th className="border py-3 pl-4 text-left text-sm font-medium">From / To</th>
             {formats.map((format) => (
               <th key={format} className="border px-4 py-3 text-center text-sm font-medium">
                 {format}

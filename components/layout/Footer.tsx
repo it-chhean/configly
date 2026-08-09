@@ -1,3 +1,4 @@
+import Link from 'next/link'
 import React from 'react'
 
 const Footer = () => {
@@ -7,17 +8,15 @@ const Footer = () => {
         <div>
           <p className='text-center sm:text-left'>
             Converter.io made by
-            <a href="https://github.com/it-chhean" target='_blank' className='ml-1 hover:underline'>@it-chhean</a>
+            <a href="https://github.com/it-chhean" target='_blank' rel='noopener noreferrer' className='ml-1 text-primary underline'>@it-chhean</a>
           </p>
         </div>
-        <div className='flex gap-4'>
-          <div>
-            <a href="" className='hover:underline'>Docs</a>
-          </div>
-          <div>
-            <a href="" className='hover:underline'>Helps</a>
-          </div>
-          <div>©2026 Converter</div>
+        <div className='flex gap-4 flex-wrap items-center justify-center sm:justify-start'>
+          <Link href="/documents#about-link" className='hover:underline'>Docs</Link>
+          <Link href="/#faq-link" className='hover:underline'>FAQs</Link>
+          <Link href="/documents#conversation-link" className='hover:underline'>Supported Formats</Link>
+          <Link href="/documents#privacy-link" className='hover:underline'>Privacy</Link>
+          <span>©2026 Converter</span>
         </div>
       </div>
     </footer>

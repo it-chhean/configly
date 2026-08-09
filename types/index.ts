@@ -7,6 +7,12 @@ export interface Feature {
    icon: LucideIcon
 }
 
+export interface UseCase {
+   id: number,
+   title: string,
+   description: string,
+}
+
 export interface Props {
    href: string,
    name: string
