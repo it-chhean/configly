@@ -1,10 +1,16 @@
-import React from 'react'
+import ArticleSection from "@/components/sections/ArticleSection"
+import ConversationSection from "@/components/sections/ConversationSection"
+import ReferenceSection from "@/components/sections/ReferenceSection"
+import { aboutItem, howItWork, privacyAndSecurity } from "@/data/documents"
 
 const page = () => {
   return (
-    <section className='h-screen'>
-      page
-      <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Asperiores laboriosam nam voluptatibus. In voluptatibus accusamus perferendis? Perferendis, sapiente fuga blanditiis nostrum nisi architecto beatae deleniti laudantium pariatur ex odit quas.</p>
+    <section className='h-screen mt-10'>
+      <ArticleSection article={aboutItem}/>
+      <ArticleSection article={howItWork}/>
+      <ArticleSection article={privacyAndSecurity}/>
+      <ConversationSection/>
+      <ReferenceSection/>
     </section>
   )
 }

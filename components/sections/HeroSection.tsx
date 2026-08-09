@@ -34,7 +34,7 @@ const HeroSection = () => {
           <div className='flex gap-2'>
           <Link
             href="/tools"
-            className=' px-3 mt-4 py-2 bg-black text-white items-center hover:underline text-sm '
+            className=' px-3 mt-4 py-2 bg-primary text-white items-center hover:underline text-sm '
           >
             Get Started
           </Link>

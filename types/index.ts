@@ -11,3 +11,9 @@ export interface Props {
    href: string,
    name: string
 }
+
+export interface Article {
+   title: string,
+   subtitle: string,
+   icon: LucideIcon
+}

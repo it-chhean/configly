@@ -12,22 +12,6 @@ export default function ArrowLink({
       >
          <span className="text-lg hover-underline">
             {name}
-         <svg
-            width="9"
-            viewBox="0 0 10 10"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-            className="inline-block flex-shrink-0 transition-transform text-primary duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
-            aria-hidden="true"
-         >
-            <path
-               d="M1 9L9 1M9 1H3M9 1V7"
-               stroke="currentColor"
-               strokeWidth={1.2}
-               strokeLinecap="round"
-               strokeLinejoin="round"
-            />
-         </svg>
          </span>
       </a>
    );
