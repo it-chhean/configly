@@ -26,7 +26,7 @@ const HeroSection = () => {
             <span className="font-bold dark:text-white">Configuration File</span>
           </h2>
           <p className="mt-4 max-w-lg text-left text-base text-muted dark:text-neutral-300">
-            Fast, reliable configuration file conversion across YAML, JSON, Properties, and XML.
+            Fast, reliable configuration file conversion across platform.
              No uploads, no servers—your data is processed locally in your browser.
           </p>
           {/* btn */}

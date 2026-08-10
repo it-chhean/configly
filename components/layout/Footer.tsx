@@ -14,7 +14,7 @@ const Footer = () => {
         <div className='flex gap-4 flex-wrap items-center justify-center sm:justify-start'>
           <Link href="/documents#about-link" className='hover:underline'>Docs</Link>
           <Link href="/#faq-link" className='hover:underline'>FAQs</Link>
-          <Link href="/documents#conversation-link" className='hover:underline'>Supported Formats</Link>
+          {/* <Link href="/documents#conversation-link" className='hover:underline'>Supported Formats</Link> */}
           <Link href="/documents#privacy-link" className='hover:underline'>Privacy</Link>
           <span>©2026 Converter</span>
         </div>

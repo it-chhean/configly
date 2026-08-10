@@ -1,5 +1,5 @@
 import {Accordion, AccordionContent, AccordionItem, AccordionTrigger,} from "@/components/ui/accordion";
-import { FaqItem, faqItems } from "@/data/faq1";
+import { FaqItem, faqItems } from "@/data/fsqs";
 import { cn } from "@/lib/utils";
 
 interface Faq1Props {

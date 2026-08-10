@@ -23,7 +23,7 @@ export default function ReferenceSection() {
               href={resource.href}
               target="_blank"
               rel="noopener noreferrer"
-              className="group flex items-center justify-between border p-4 transition-colors duration-200 hover:bg-muted/10"
+              className="group flex items-center justify-between border p-4 transition-colors duration-200 hover:bg-primary/5"
             >
               <div>
                 <p className="text-sm font-medium group-hover:text-primary">

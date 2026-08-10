@@ -58,7 +58,7 @@ const InputField: FC = () => {
   // Perform format conversion whenever inputCode, fromLang, or toLang changes
   useEffect(() => {
     if (!inputCode.trim()) {
-      setOutputCode("");
+      setOutputCode(' ');
       setErrorMsg(null);
       return;
     }
