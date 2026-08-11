@@ -174,79 +174,92 @@ const InputField: FC = () => {
   const inputLineCount = Math.max(inputCode.split("\n").length, 1);
   const outputLineCount = Math.max(outputCode.split("\n").length, 1);
 
-return (
-    <section className="w-full">
+  return (
+    <section className="w-full h-full min-w-0">
       {/* Top action bar */}
-      <div className="flex flex-wrap items-center justify-between gap-2 mb-3 ">
-        <div className="flex items-center gap-2">
+      <div className="mb-3 flex w-full min-w-0 flex-wrap items-center justify-between gap-2">
+        <div className="flex min-w-0 items-center gap-2">
           <button
             type="button"
             onClick={handleSwapLanguages}
-            className="flex items-center gap-1.5 px-3 py-1.5 text-xs font-medium bg-stone-100 hover:bg-stone-200 text-primary transition-colors"
+            className="flex max-w-full items-center gap-1.5 bg-stone-100 px-3 py-1.5 text-xs font-medium text-primary transition-colors hover:bg-stone-200"
             title="Swap source and target languages"
           >
-            <ArrowRightLeft size={14} />
-            Swap ({fromLang} - {toLang})
+            <ArrowRightLeft size={14} className="shrink-0" />
+            <span className="truncate">
+              Swap ({fromLang} - {toLang})
+            </span>
           </button>
         </div>
+
         {errorMsg && (
-          <div className="flex items-center gap-1.5 text-xs font-medium text-amber-700 bg-amber-50 border border-amber-200 px-3 py-1 rounded">
-            <AlertCircle size={14} />
-            {errorMsg}
+          <div className="flex max-w-full items-start gap-1.5 rounded border border-amber-200 bg-amber-50 px-3 py-1.5 text-xs font-medium text-amber-700">
+            <AlertCircle size={14} className="mt-0.5 shrink-0" />
+            <span className="break-words">{errorMsg}</span>
           </div>
         )}
       </div>
 
       {/* Editors Container */}
-      <div className="relative w-full flex flex-col lg:flex-row gap-4 md:gap-6 lg:gap-0 overflow-hidden bg-white">
-        {/* Left Panel: Input Editor */}
-        <div className="flex flex-col flex-1 h-[300px] sm:h-[400px] md:h-[500px] lg:h-[580px] bg-white text-primary border lg:border-b lg:border-r-0 overflow-hidden">
-          {/* Toolbar */}
-          <div className="flex items-center justify-between p-2 px-3 border-b text-sm text-primary shrink-0">
-            <div className="flex items-center gap-2">
-              <span className="text-sm text-primary/75 mr-1">
+      <div className="relative flex w-full min-w-0 flex-col gap-4 overflow-hidden bg-white lg:flex-row lg:gap-0">
+        <div className="flex h-[360px] min-h-[500px] min-w-0 flex-1 shrink-0 flex-col overflow-hidden border bg-white text-primary sm:h-[400px] sm:min-h-[400px] md:h-[500px] md:min-h-[500px] lg:h-[580px] lg:min-h-[580px] lg:shrink lg:border-r-0">
+          {/* Input Toolbar */}
+          <div className="flex min-w-0 shrink-0 items-center justify-between gap-2 border-b px-3 py-2 text-sm text-primary">
+            {/* Source language */}
+            <div className="flex min-w-0 items-center gap-2">
+              <span className="mr-1 shrink-0 text-sm text-primary/75">
                 Source:
               </span>
-              <div className="relative">
+
+              <div className="relative shrink-0">
                 <button
                   type="button"
                   onClick={() => {
                     setFromLangOpen((o) => !o);
                     setToLangOpen(false);
                   }}
-                  className="flex items-center gap-1 cursor-pointer px-3 py-1.5 bg-primary text-white text-sm font-medium hover:bg-primary/90 transition-colors"
+                  className="flex items-center gap-1 bg-primary px-3 py-1.5 text-sm font-medium text-white transition-colors hover:bg-primary/90"
                 >
                   {fromLang}
+
                   <ChevronDown
                     size={12}
-                    className={`transition-transform duration-300 ${fromLangOpen ? "rotate-180" : "rotate-0"}`}
+                    className={`transition-transform duration-300 ${
+                      fromLangOpen ? "rotate-180" : "rotate-0"
+                    }`}
                   />
                 </button>
+
                 {fromLangOpen && (
-                  <div className="absolute left-0 top-full z-50 mt-1 w-36 bg-white cursor-pointer border border-stone-200 rounded shadow-lg py-1">
+                  <div className="absolute left-0 top-full z-50 mt-1 w-36 overflow-hidden rounded border border-stone-200 bg-white py-1 shadow-lg">
                     {LANGUAGES.map((l) => (
-                      <div
+                      <button
                         key={l}
+                        type="button"
                         onClick={() => {
                           setFromLang(l);
                           setFromLangOpen(false);
                         }}
-                        className={`px-3 py-1.5 text-xs hover:bg-stone-100 text-primary ${
-                          fromLang === l ? "font-semibold bg-stone-50" : ""
+                        className={`block w-full px-3 py-1.5 text-left text-xs text-primary hover:bg-stone-100 ${
+                          fromLang === l
+                            ? "bg-stone-50 font-semibold"
+                            : ""
                         }`}
                       >
                         {l}
-                      </div>
+                      </button>
                     ))}
                   </div>
                 )}
               </div>
             </div>
-            <div className="flex items-center gap-3 text-primary/75">
+
+            {/* Clear input */}
+            <div className="flex shrink-0 items-center gap-3 text-primary/75">
               <button
                 type="button"
                 onClick={() => setInputCode("")}
-                className="hover:text-primary transition-colors p-1"
+                className="p-1 transition-colors hover:text-primary"
                 title="Clear input"
               >
                 <Trash size={15} />
@@ -254,96 +267,127 @@ return (
             </div>
           </div>
 
-          {/* Textarea Area */}
-          <div className="relative z-10 flex flex-1 px-3 min-h-0 overflow-y-auto bg-stone-50/30">
+          {/* Input Textarea Area */}
+          <div className="relative z-10 flex min-h-0 min-w-0 flex-1 overflow-hidden bg-white px-3">
             <textarea
               ref={inputTextareaRef}
               value={inputCode}
               onChange={(e) => setInputCode(e.target.value)}
-              onKeyUp={() => updateCursorPosition(inputTextareaRef, setInputCursor)}
-              onClick={() => updateCursorPosition(inputTextareaRef, setInputCursor)}
-              onSelect={() => updateCursorPosition(inputTextareaRef, setInputCursor)}
+              onKeyUp={() =>
+                updateCursorPosition(
+                  inputTextareaRef,
+                  setInputCursor
+                )
+              }
+              onClick={() =>
+                updateCursorPosition(
+                  inputTextareaRef,
+                  setInputCursor
+                )
+              }
+              onSelect={() =>
+                updateCursorPosition(
+                  inputTextareaRef,
+                  setInputCursor
+                )
+              }
               spellCheck={false}
               wrap="soft"
               placeholder={`Paste or type your ${fromLang} configuration here...`}
-              className="flex-1 resize-none outline-none h-[420px] lg:mb-6 lg:h-[580px] border-none text-primary text-sm font-mono leading-6 pt-3 pb-3 pr-4 placeholder:text-stone-400"
+              className="min-h-0 min-w-0 flex-1 resize-none border-none bg-transparent pt-3 pr-4 pb-3 font-mono text-sm leading-6 text-primary outline-none placeholder:text-stone-400"
             />
           </div>
 
-          {/* Input Status bar */}
-          <div className="flex items-center justify-between px-3 py-1.5 border-t text-muted font-sans text-xs shrink-0">
+          {/* Input Status Bar */}
+          <div className="flex shrink-0 items-center justify-between border-t px-3 py-1.5 font-sans text-xs text-muted">
             <span>
               Ln {inputCursor.line}, Col {inputCursor.col}
             </span>
+
             <span>{inputLineCount} lines</span>
           </div>
         </div>
 
-        {/* Right Panel: Output Editor */}
-        <div className="flex flex-col flex-1 h-[300px] sm:h-[400px] md:h-[500px] lg:h-[580px] border bg-white text-primary overflow-hidden">
+        <div className="flex h-[360px] min-h-[500px] min-w-0 flex-1 shrink-0 flex-col overflow-hidden border bg-white text-primary sm:h-[400px] sm:min-h-[400px] md:h-[500px] md:min-h-[500px] lg:h-[580px] lg:min-h-[580px] lg:shrink lg:border-r-0">
           {/* Output Toolbar */}
-          <div className="flex items-center justify-between p-2 px-3 border-b  bg-white text-sm text-primary shrink-0">
-            <div className="flex items-center gap-2">
-              <span className="text-sm  text-primary/75 mr-1">
+          <div className="flex min-w-0 shrink-0 items-center justify-between gap-2 border-b bg-white px-3 py-2 text-sm text-primary">
+            {/* Target language */}
+            <div className="flex min-w-0 items-center gap-2">
+              <span className="mr-1 shrink-0 text-sm text-primary/75">
                 Target:
               </span>
-              <div className="relative">
+
+              <div className="relative shrink-0">
                 <button
                   type="button"
                   onClick={() => {
                     setToLangOpen((o) => !o);
                     setFromLangOpen(false);
                   }}
-                  className="flex items-center gap-1 cursor-pointer px-3 py-1.5 bg-primary text-white text-sm font-medium  hover:bg-primary/90 transition-colors"
+                  className="flex items-center gap-1 bg-primary px-3 py-1.5 text-sm font-medium text-white transition-colors hover:bg-primary/90"
                 >
                   {toLang}
+
                   <ChevronDown
                     size={12}
-                    className={`transition-transform duration-300 ${toLangOpen ? "rotate-180" : "rotate-0"}`}
+                    className={`transition-transform duration-300 ${
+                      toLangOpen ? "rotate-180" : "rotate-0"
+                    }`}
                   />
                 </button>
+
                 {toLangOpen && (
-                  <div className="absolute left-0 top-full z-50 mt-1 w-36 bg-white cursor-pointer border rounded shadow-lg py-1">
+                  <div className="absolute left-0 top-full z-50 mt-1 w-36 overflow-hidden rounded border border-stone-200 bg-white py-1 shadow-lg">
                     {LANGUAGES.map((l) => (
-                      <div
+                      <button
                         key={l}
+                        type="button"
                         onClick={() => {
                           setToLang(l);
                           setToLangOpen(false);
                         }}
-                        className={`px-3 py-1.5 text-xs hover:bg-stone-100 text-primary ${
-                          toLang === l ? "font-semibold bg-stone-100 text-primary" : ""
+                        className={`block w-full px-3 py-1.5 text-left text-xs text-primary hover:bg-stone-100 ${
+                          toLang === l
+                            ? "bg-stone-100 font-semibold"
+                            : ""
                         }`}
                       >
                         {l}
-                      </div>
+                      </button>
                     ))}
                   </div>
                 )}
               </div>
             </div>
 
-            <div className="flex items-center gap-3 text-primary/75">
+            {/* Output actions */}
+            <div className="flex shrink-0 items-center gap-2 text-primary/75 sm:gap-3">
+              {/* Copy */}
               <button
                 type="button"
                 onClick={handleCopyOutput}
                 disabled={!outputCode}
-                className="flex items-center gap-1 hover:text-primary transition-colors p-1 disabled:opacity-40"
+                className="flex items-center gap-1 p-1 transition-colors hover:text-primary disabled:opacity-40"
                 title="Copy to clipboard"
               >
                 {copied ? (
-                  <span className="flex items-center gap-1 text-xs text-emerald-400 font-medium">
-                    <Check size={14} /> Copied!
+                  <span className="flex items-center gap-1 text-xs font-medium text-emerald-400">
+                    <Check size={14} />
+                    <span className="hidden sm:inline">
+                      Copied!
+                    </span>
                   </span>
                 ) : (
                   <Copy size={15} />
                 )}
               </button>
+
+              {/* Download */}
               <button
                 type="button"
                 onClick={handleDownload}
                 disabled={!outputCode}
-                className="hover:text-primary transition-colors p-1 disabled:opacity-40"
+                className="p-1 transition-colors hover:text-primary disabled:opacity-40"
                 title="Download formatted file"
               >
                 <Download size={15} />
@@ -351,50 +395,61 @@ return (
             </div>
           </div>
 
-          {/* Output Area */}
-          <div className="relative z-10 flex flex-1 px-3 min-h-0 overflow-y-auto bg-white">
+          {/* Output Textarea Area */}
+          <div className="relative z-10 flex min-h-0 min-w-0 flex-1 overflow-hidden bg-white px-3">
             <textarea
               ref={outputTextareaRef}
               value={outputCode}
               readOnly
-              onKeyUp={() => updateCursorPosition(outputTextareaRef, setOutputCursor)}
-              onClick={() => updateCursorPosition(outputTextareaRef, setOutputCursor)}
-              onSelect={() => updateCursorPosition(outputTextareaRef, setOutputCursor)}
+              onKeyUp={() =>
+                updateCursorPosition(
+                  outputTextareaRef,
+                  setOutputCursor
+                )
+              }
+              onClick={() =>
+                updateCursorPosition(
+                  outputTextareaRef,
+                  setOutputCursor
+                )
+              }
+              onSelect={() =>
+                updateCursorPosition(
+                  outputTextareaRef,
+                  setOutputCursor
+                )
+              }
               wrap="soft"
               placeholder={`Converted ${toLang} output will appear here...`}
-              className="flex-1 resize-none outline-none h-[420px] lg:mb-6 lg:h-[580px] border-none text-primary text-sm font-mono leading-6 pt-3 pb-3 pr-4 placeholder:text-stone-400"
+              className="min-h-0 min-w-0 flex-1 resize-none border-none bg-transparent pt-3 pr-4 pb-3 font-mono text-sm leading-6 text-primary outline-none placeholder:text-stone-400"
             />
           </div>
 
-          {/* Output Status bar */}
-          <div className="flex items-center justify-between px-3 py-1.5 border-t border-stone-200 bg-white text-muted font-sans text-xs shrink-0">
+          {/* Output Status Bar */}
+          <div className="flex shrink-0 items-center justify-between border-t border-stone-200 bg-white px-3 py-1.5 font-sans text-xs text-muted">
             <span>
               Ln {outputCursor.line}, Col {outputCursor.col}
             </span>
-            <div className="flex items-center gap-2">
-              <span>{outputLineCount} lines</span>
-            </div>
+
+            <span>{outputLineCount} lines</span>
           </div>
         </div>
       </div>
 
-      {/* Footer reference links */}
-      <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center py-2 bg-white gap-2">
-        <div className="flex text-sm text-primary">
-          <p className="flex gap-1 mt-2 text-muted items-center text-xs sm:text-sm">
-            Want to learn more about configuration file formats? 
-            <a
-              href="/documents#resource-link"
-              rel="noopener noreferrer"
-              className="text-primary hover:underline"
-            >
-              You can find official resources.
-            </a>
-          </p>
-        </div>
+      <div className="w-full bg-white py-2">
+        <p className="mt-2 text-xs text-muted sm:text-sm">
+          Want to learn more about configuration file formats?{" "}
+          <a
+            href="/documents#resource-link"
+            rel="noopener noreferrer"
+            className="text-primary hover:underline"
+          >
+            You can find official resources.
+          </a>
+        </p>
       </div>
     </section>
   );
-};
+}
 
 export default InputField;
