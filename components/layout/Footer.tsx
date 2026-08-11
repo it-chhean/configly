@@ -1,7 +1,12 @@
+"use client";
+
+import { Divide } from 'lucide-react';
 import Link from 'next/link'
-import React from 'react'
+import { usePathname } from 'next/navigation'
 
 const Footer = () => {
+  const pathName = usePathname();
+  const isHome = pathName === '/';
   return (
     <footer className='border-t text-muted '>
       <div className="mx-auto flex max-w-5xl flex-col items-center justify-between gap-2 px-6 py-6 text-xs text-muted-foreground sm:flex-row sm:items-start">
@@ -11,12 +16,39 @@ const Footer = () => {
             <a href="https://github.com/it-chhean" target='_blank' rel='noopener noreferrer' className='ml-1 text-primary underline'>@it-chhean</a>
           </p>
         </div>
-        <div className='flex gap-4 flex-wrap items-center justify-center sm:justify-start'>
-          <Link href="/documents#about-link" className='hover:underline'>Docs</Link>
-          <Link href="/#faq-link" className='hover:underline'>FAQs</Link>
-          {/* <Link href="/documents#conversation-link" className='hover:underline'>Supported Formats</Link> */}
-          <Link href="/documents#privacy-link" className='hover:underline'>Privacy</Link>
-          <span>©2026 Converter</span>
+          <div className="flex flex-wrap items-center justify-center gap-4 sm:justify-start">
+            {isHome ? (
+              <>
+                <Link
+                  href="/documents#about-link"
+                  className="duration-200 hover:text-primary hover:underline"
+                >
+                  Docs
+                </Link>
+
+                <Link
+                  href="/#faq-link"
+                  className="duration-200 hover:text-primary hover:underline"
+                >
+                  FAQs
+                </Link>
+
+                <Link
+                  href="/documents#privacy-link"
+                  className="duration-200 hover:text-primary hover:underline"
+                >
+                  Privacy
+                </Link>
+                <span>©2026 Converter</span>
+              </>
+            ) : (
+                <Link
+                  href="/"
+                  className="scroll-to-top duration-200 hover:text-primary hover:underline"
+                >
+                  Back to Home
+                </Link>
+            )}
         </div>
       </div>
     </footer>

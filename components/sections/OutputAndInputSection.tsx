@@ -3,13 +3,13 @@ import InputField from '../feature/InputField';
 
 const OutputAndInputSection = () => {
   return (
-    <section className='my-9'>
+    <section className=''>
       <div className="mb-8">
         <h3 className="text-lg font-medium">
-          Why Choose Converter Config file?
+            Convert Your Configuration
         </h3>
         <p className="mt-2 text-sm text-muted">
-          Convert configuration files between popular formats with fast, secure, browser-based processing. No uploads, no servers, no data leaves your device.
+            Past your configuration file below, choose the output format, and convert in instantly in your browser.
         </p>
       </div>
       <InputField/>

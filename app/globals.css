@@ -133,7 +133,6 @@ p {
   height: 1px;
   opacity: 70%;
   background: #111827;
-
   transform: scaleX(0);
   transform-origin: left;
   transition: transform 250ms ease;

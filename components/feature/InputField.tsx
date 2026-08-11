@@ -20,19 +20,12 @@ server.port=8080
 server.host=127.0.0.1
 server.servlet.context-path=/api/v1
 
-# Application Details
-spring.application.name=converter-service
-spring.profiles.active=development
-
 # Database Settings
 spring.datasource.url=jdbc:postgresql://localhost:5432/converter_db
 spring.datasource.username=dbadmin
 spring.datasource.password=secret_password
 spring.datasource.hikari.maximum-pool-size=10
-
-# Application Features
-app.features.auto-save=true
-app.features.max-upload-size=50`;
+`;
 
 interface CursorPosition {
   line: number;
