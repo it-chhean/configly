@@ -11,8 +11,7 @@ export default function ReferenceSection() {
           </h3>
 
           <p className="mt-1 text-sm text-muted">
-            Learn more about the configuration formats and tools supported
-            by Converter.io.
+            Learn more about each configuration format, including its syntax, structure, and common use cases.
           </p>
         </div>
 
@@ -45,19 +44,17 @@ export default function ReferenceSection() {
         </div>
       </div>
         <div className="mt-4">
-          <p className="flex gap-1 mt-2 text-muted items-center text-xs sm:text-sm">
-            Suggestions or feedback? Please reach out to us on our{" "}
+          <p className="mt-2 flex items-center gap-1 text-xs text-muted sm:text-sm">
+            Have a suggestion or feedback?{" "}Feel free to open a
             <a
               href="/document/#resource-link"
               rel="noopener noreferrer"
-              className="text-primary underline "
+              className="text-primary underline"
             >
-            Pull Request 
+            Pull Request.
             </a>
-            are welcome!
           </p>
-        
-        </div> 
+        </div>
     </section>
   );
 }

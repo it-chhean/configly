@@ -174,7 +174,7 @@ const InputField: FC = () => {
   const inputLineCount = Math.max(inputCode.split("\n").length, 1);
   const outputLineCount = Math.max(outputCode.split("\n").length, 1);
 
-  return (
+return (
     <section className="w-full">
       {/* Top action bar */}
       <div className="flex flex-wrap items-center justify-between gap-2 mb-3 ">
@@ -198,11 +198,11 @@ const InputField: FC = () => {
       </div>
 
       {/* Editors Container */}
-      <div className="relative w-full flex flex-col lg:flex-row gap-4 lg:gap-0 border border-stone-200 overflow-hidden bg-white">
+      <div className="relative w-full flex flex-col lg:flex-row gap-4 md:gap-6 lg:gap-0 overflow-hidden bg-white">
         {/* Left Panel: Input Editor */}
-        <div className="flex flex-col flex-1 h-[580px] bg-white text-primary border-b lg:border-b-0 lg:border-r border-stone-200 overflow-hidden">
+        <div className="flex flex-col flex-1 h-[300px] sm:h-[400px] md:h-[500px] lg:h-[580px] bg-white text-primary border lg:border-b lg:border-r-0 overflow-hidden">
           {/* Toolbar */}
-          <div className="flex items-center justify-between p-2 px-3 border-b border-stone-200 text-sm text-primary shrink-0">
+          <div className="flex items-center justify-between p-2 px-3 border-b text-sm text-primary shrink-0">
             <div className="flex items-center gap-2">
               <span className="text-sm text-primary/75 mr-1">
                 Source:
@@ -266,12 +266,12 @@ const InputField: FC = () => {
               spellCheck={false}
               wrap="soft"
               placeholder={`Paste or type your ${fromLang} configuration here...`}
-              className="flex-1 resize-none outline-none border-none text-primary text-sm font-mono leading-6 pt-3 pb-3 pr-4 placeholder:text-stone-400"
+              className="flex-1 resize-none outline-none h-[420px] lg:mb-6 lg:h-[580px] border-none text-primary text-sm font-mono leading-6 pt-3 pb-3 pr-4 placeholder:text-stone-400"
             />
           </div>
 
           {/* Input Status bar */}
-          <div className="flex items-center justify-between px-3 py-1.5 border-t border-stone-200 text-muted font-sans text-xs shrink-0">
+          <div className="flex items-center justify-between px-3 py-1.5 border-t text-muted font-sans text-xs shrink-0">
             <span>
               Ln {inputCursor.line}, Col {inputCursor.col}
             </span>
@@ -280,9 +280,9 @@ const InputField: FC = () => {
         </div>
 
         {/* Right Panel: Output Editor */}
-        <div className="flex flex-col flex-1 h-[580px] bg-white text-primary overflow-hidden">
+        <div className="flex flex-col flex-1 h-[300px] sm:h-[400px] md:h-[500px] lg:h-[580px] border bg-white text-primary overflow-hidden">
           {/* Output Toolbar */}
-          <div className="flex items-center justify-between p-2 px-3 border-b bg-white text-sm text-primary shrink-0">
+          <div className="flex items-center justify-between p-2 px-3 border-b  bg-white text-sm text-primary shrink-0">
             <div className="flex items-center gap-2">
               <span className="text-sm  text-primary/75 mr-1">
                 Target:
@@ -362,12 +362,12 @@ const InputField: FC = () => {
               onSelect={() => updateCursorPosition(outputTextareaRef, setOutputCursor)}
               wrap="soft"
               placeholder={`Converted ${toLang} output will appear here...`}
-              className="flex-1 resize-none outline-none border-none text-primary text-sm font-mono leading-6 pt-3 pb-3 pr-4 placeholder:text-stone-400"
+              className="flex-1 resize-none outline-none h-[420px] lg:mb-6 lg:h-[580px] border-none text-primary text-sm font-mono leading-6 pt-3 pb-3 pr-4 placeholder:text-stone-400"
             />
           </div>
 
           {/* Output Status bar */}
-          <div className="flex items-center justify-between px-3 py-1.5 border-t bg-white text-muted font-sans text-xs shrink-0">
+          <div className="flex items-center justify-between px-3 py-1.5 border-t border-stone-200 bg-white text-muted font-sans text-xs shrink-0">
             <span>
               Ln {outputCursor.line}, Col {outputCursor.col}
             </span>
@@ -384,21 +384,13 @@ const InputField: FC = () => {
           <p className="flex gap-1 mt-2 text-muted items-center text-xs sm:text-sm">
             Want to learn more about configuration file formats? 
             <a
-              href="/document/#resource-link"
+              href="/documents#resource-link"
               rel="noopener noreferrer"
               className="text-primary hover:underline"
             >
               You can find official resources.
             </a>
           </p>
-        </div>
-        <div>
-          <Link
-            href="/"
-            className="flex gap-1 mt-2 text-primary items-center hover:underline text-xs sm:text-sm font-medium"
-          >
-            Back
-          </Link>
         </div>
       </div>
     </section>

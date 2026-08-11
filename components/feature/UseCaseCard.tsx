@@ -8,7 +8,7 @@ interface UseCaseCardProps {
 export default function UseCaseCard({ useCase }: UseCaseCardProps) {
   return (
     <div className="w-full border-r border-b p-6 -mr-px -mb-px">
-      <h3 className="text-base font-medium">{useCase.title}</h3>
+      <h3 className="text-sm font-medium">{useCase.title}</h3>
       <p className="mt-2 text-sm text-muted">{useCase.description}</p>
     </div>
   );

@@ -1,5 +1,5 @@
 import {Accordion, AccordionContent, AccordionItem, AccordionTrigger,} from "@/components/ui/accordion";
-import { FaqItem, faqItems } from "@/data/fsqs";
+import { FaqItem, faqItems } from "@/data/faqs";
 import { cn } from "@/lib/utils";
 
 interface Faq1Props {
@@ -18,7 +18,7 @@ const FAQSection = ({items = faqItems,className,}: Faq1Props) => {
                 Frequently asked questions 
             </h3>
             <p className="mt-2 text-sm text-muted">
-              Everything you need to know to get started
+              Everything you need to know to get started.
             </p>
          </div>
           <Accordion multiple={false}>

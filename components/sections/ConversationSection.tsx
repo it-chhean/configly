@@ -7,15 +7,15 @@ export default function ConversationSection() {
     <section className="overflow-x-auto my-10">
       <div className="mb-8">
           <h3 className="text-lg font-medium">
-            All Configuration Format Conversions
+            Configuration Format Conversions
           </h3>
           <p className="mt-2  text-sm text-muted">
-            Click any cell to convert between formats. All 42 conversion combinations are available for free.
+            All conversion combinations are available for free.
           </p>
       </div>
       <table className="border-collapse border w-full">
         <thead>
-          <tr className="bg-gray-50">
+          <tr className="bg-primary/5">
             <th className="border py-3 pl-4 text-left text-sm font-medium">From / To</th>
             {formats.map((format) => (
               <th key={format} className="border px-4 py-3 text-center text-sm font-medium">

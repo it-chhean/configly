@@ -19,15 +19,15 @@ const HeroSection = () => {
         speedScale={1}
       />
  
-      <div className="relative z-10 w-full space-y-6 mt-20 mb-30 md:flex-row">
+      <div className="relative z-10 w-full space-y-6 my-16 md:my-20 sm:my-30 md:flex-row">
         <div>
           <h2 className="text-left text-4xl font-normal tracking-tight text-j-900 sm:text-5xl  dark:text-neutral-400">
-            Free convert your{" "}
-            <span className="font-bold dark:text-white">Configuration File</span>
+            Convert your Config File{" "}
+            <span className="font-bold dark:text-white">Instantly.</span>
           </h2>
           <p className="mt-4 max-w-lg text-left text-base text-muted dark:text-neutral-300">
             Fast, reliable configuration file conversion across platform.
-             No uploads, no servers—your data is processed locally in your browser.
+             No uploads, no servers, your data is processed locally in your browser.
           </p>
           {/* btn */}
           <div className='flex gap-2'>
@@ -35,13 +35,13 @@ const HeroSection = () => {
             href="/tools"
             className=' px-3 mt-4 py-2 bg-primary text-white items-center hover:underline text-sm '
           >
-            Try it now
+          Try Configly
           </Link>
           <Link
             href="/documents"
             className=' px-3 mt-4 py-2 bg-white text-primary border items-center hover:underline text-sm '
           >
-            View Docs
+            View docs 
           </Link>
           </div>
         </div>

@@ -12,7 +12,7 @@ const Footer = () => {
       <div className="mx-auto flex max-w-5xl flex-col items-center justify-between gap-2 px-6 py-6 text-xs text-muted-foreground sm:flex-row sm:items-start">
         <div>
           <p className='text-center sm:text-left'>
-            Converter.io made by
+            Configly.io made by
             <a href="https://github.com/it-chhean" target='_blank' rel='noopener noreferrer' className='ml-1 text-primary underline'>@it-chhean</a>
           </p>
         </div>
@@ -42,12 +42,12 @@ const Footer = () => {
                 <span>©2026 Converter</span>
               </>
             ) : (
-                <Link
+                <a
                   href="/"
-                  className="scroll-to-top duration-200 hover:text-primary hover:underline"
+                  className="scroll-mt-55 duration-200 hover:text-primary hover:underline"
                 >
                   Back to Home
-                </Link>
+                </a>
             )}
         </div>
       </div>

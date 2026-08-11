@@ -2,19 +2,22 @@ import { Article } from "@/types";
 import { ChevronRight, ShieldAlert } from "lucide-react";
 
 export const aboutItem: Article = {
-   title: "What is Converter?",
-   subtitle: "Different tools and platforms require different configuration formats. When migrating between platforms, adopting new tools, or standardizing your team's configuration approach, you often need to convert between formats. This tool makes that process instant and error-free. ",
-   icon: ChevronRight
+  title: "What is Configly?",
+  subtitle:
+    "Configly is an open-source, browser-based tool for converting configuration files between popular formats. It helps developers migrate configurations between tools, platforms, and environments without manually rewriting or restructuring their files.",
+  icon: ChevronRight,
 }
 
 export const howItWork: Article = {
-   title: "How Converter Works?",
-   subtitle: "Paste your configuration text into the input panel. The tool automatically detects whether your input is JSON, YAML, TOML, or INI. Select your desired output format from the dropdown, click Convert (or press Ctrl+Enter), and get your converted configuration with syntax highlighting. Copy it to your clipboard or download it as a file with the correct extension. ",
-   icon: ChevronRight 
+  title: "How Configly Works",
+  subtitle:
+    "Paste or upload your configuration, choose the target format, and let Configly handle the conversion in your browser. Your converted configuration is displayed with syntax highlighting and can be copied or downloaded with the appropriate file extension.",
+  icon: ChevronRight,
 }
 
 export const privacyAndSecurity: Article = {
-   title: "Privacy and Security",
-   subtitle: "This converter runs entirely in your browser. Your configuration data never leaves your machine -- no server requests, no data storage, no tracking of your input. Safe for converting configs that contain sensitive values like database credentials or API keys. ",
-   icon:  ShieldAlert
+    title: "Privacy & Security",
+    subtitle:
+    "Your configuration stays on your device. Configly processes files directly in your browser, so your configuration is not uploaded to our servers, stored in a database, or sent to third-party services. Files are only processed locally to perform the conversion, giving you full control over your data.",
+    icon: ShieldAlert,
 }
