@@ -436,13 +436,15 @@ const InputField: FC = () => {
         </div>
       </div>
 
-      <div className="w-full bg-white py-2">
-        <p className="mt-2 text-xs text-muted sm:text-sm">
-          Want to learn more about configuration file formats?{" "}
+      <div className="w-full flex flex-col sm:flex-row bg-white py-2">
+        <p className="text-xs text-muted sm:text-sm">
+          Want to learn more about configuration file formats?
+        </p>
+        <p>
           <a
             href="/documents#resource-link"
             rel="noopener noreferrer"
-            className="text-primary hover:underline"
+            className="ml-0 text-xs text-primary hover:underline sm:ml-1 sm:text-sm"
           >
             You can find official resources.
           </a>
