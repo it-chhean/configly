@@ -1,4 +1,3 @@
-## Getting Started
 First, run this command pick up which once that your favorite: 
 
 ```bash
