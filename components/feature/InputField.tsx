@@ -308,7 +308,7 @@ const InputField: FC = () => {
           </div>
         </div>
 
-        <div className="flex h-[360px] min-h-[500px] min-w-0 flex-1 shrink-0 flex-col overflow-hidden border bg-white text-primary sm:h-[400px] sm:min-h-[400px] md:h-[500px] md:min-h-[500px] lg:h-[580px] lg:min-h-[580px] lg:shrink lg:border-r-0">
+        <div className="flex h-[360px] min-h-[500px] min-w-0 flex-1 shrink-0 flex-col overflow-hidden border bg-white text-primary sm:h-[400px] sm:min-h-[400px] md:h-[500px] md:min-h-[500px] lg:h-[580px] lg:min-h-[580px] lg:shrink lg:border-r">
           {/* Output Toolbar */}
           <div className="flex min-w-0 shrink-0 items-center justify-between gap-2 border-b bg-white px-3 py-2 text-sm text-primary">
             {/* Target language */}
