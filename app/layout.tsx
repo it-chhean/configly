@@ -19,7 +19,7 @@ export const metadata: Metadata = {
   description:
     "Convert YAML, JSON, TOML, ENV, Properties, and XML configuration files instantly. Fast, simple, and browser-based — your data stays on your device.",
   icons: {
-    icon: "/icon.jpeg",
+    icon: "/favicon.ico",
   }
 };
 
