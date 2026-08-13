@@ -1,4 +1,4 @@
-# Contributing to Configly
+## Contributing to Configly
 
 Thanks for your interest in contributing to Configly 🎉 — a browser-based configuration file converter built with Next.js. This document explains how to set up the project locally and how to submit changes.
 
