@@ -54,8 +54,6 @@ export const metadata: Metadata = {
     images: [
       {
         url: "/assets/image/og-image.png",
-        width: 1200,
-        height: 630,
         alt: `${siteName} — The Configuration File Converter`,
       },
     ],
