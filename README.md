@@ -1,17 +1,8 @@
-# Configly
+### Configly
 
-![Next.js](https://img.shields.io/badge/Next.js-16-black?logo=next.js)
-![React](https://img.shields.io/badge/React-19-61DAFB?logo=react&logoColor=black)
-![TypeScript](https://img.shields.io/badge/TypeScript-5-3178C6?logo=typescript&logoColor=white)
-![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-4-38BDF8?logo=tailwindcss&logoColor=white)
+Configly is a fast, browser-based configuration file converter. Paste or upload a config file and instantly convert it between JSON, YAML, XML, TOML, Java Properties, and ENV — no installs, no server uploads, no account required.
 
-**Configly** is a fast, browser-based configuration file converter. Paste or upload a config file and instantly convert it between **JSON, YAML, XML, TOML, Java Properties, and ENV** — no installs, no server uploads, no account required.
-
-🔗 **Live demo:** [configly.onrender.com](https://configly.onrender.com/)
-
----
-
-## Table of Contents
+### Table of Contents
 
 - [Why Configly](#why-configly)
 - [Supported Formats](#supported-formats)
@@ -23,24 +14,11 @@
 - [Contributing](#contributing)
 - [License](#license)
 
-## Why Configly
+### Why Configly
 
-- 🔒 **100% Private & Secure** — All conversions happen client-side in your browser. Your configuration data never leaves your device.
-- ⚡ **Instant Conversion** — Real-time output as you type, no processing delay.
-- 🧑‍💻 **Developer Friendly** — Built for the config formats developers actually deal with day to day.
-
-## Supported Formats
-
-| Format | Typical Extension |
-|---|---|
-| JSON | `.json` |
-| YAML | `.yaml`, `.yml` |
-| XML | `.xml` |
-| TOML | `.toml` |
-| Java Properties | `.properties` |
-| ENV | `.env` |
-
-More formats may be added over time — see [Contributing](#contributing) if you'd like to help add one.
+- 100% Private & Secure — All conversions happen client-side in your browser. Your configuration data never leaves your device.
+- Instant Conversion — Real-time output as you type, no processing delay.
+- Developer Friendly — Built for the config formats developers actually deal with day to day.
 
 ## Use Cases
 
