@@ -1,8 +1,8 @@
-### Configly
+## Configly
 
 Configly is a fast, browser-based configuration file converter. Paste or upload a config file and instantly convert it between JSON, YAML, XML, TOML, Java Properties, and ENV — no installs, no server uploads, no account required.
 
-### Table of Contents
+## Table of Contents
 
 - [Why Configly](#why-configly)
 - [Supported Formats](#supported-formats)
@@ -14,7 +14,7 @@ Configly is a fast, browser-based configuration file converter. Paste or upload 
 - [Contributing](#contributing)
 - [License](#license)
 
-### Why Configly
+## Why Configly
 
 - 100% Private & Secure — All conversions happen client-side in your browser. Your configuration data never leaves your device.
 - Instant Conversion — Real-time output as you type, no processing delay.
