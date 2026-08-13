@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import Footer from "@/components/layout/Footer";
@@ -14,13 +14,77 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
+const siteUrl = "https://configly.onrender.com";
+const siteName = "Configly";
+const siteDescription =
+  "Convert YAML, JSON, TOML, ENV, Properties, and XML configuration files instantly. Fast, simple, and browser-based — your data stays on your device.";
+
 export const metadata: Metadata = {
-  title: "Configly - The Configuration File Converter",
-  description:
-    "Convert YAML, JSON, TOML, ENV, Properties, and XML configuration files instantly. Fast, simple, and browser-based — your data stays on your device.",
+  metadataBase: new URL(siteUrl),
+  title: {
+    default: `${siteName} - The Configuration File Converter`,
+    template: `%s | ${siteName}`,
+  },
+  description: siteDescription,
+  applicationName: siteName,
+  keywords: [
+    "config file converter",
+    "configuration converter",
+    "YAML to JSON converter",
+    "JSON to YAML converter",
+    "TOML converter",
+    "XML converter",
+    "ENV file converter",
+    "Java properties converter",
+    "developer tools",
+  ],
+  creator: siteName,
+  publisher: siteName,
+  category: "technology",
+  alternates: {
+    canonical: siteUrl,
+  },
+  openGraph: {
+    type: "website",
+    url: siteUrl,
+    siteName,
+    locale: "en_US",
+    title: `${siteName} - The Configuration File Converter`,
+    description: siteDescription,
+    images: [
+      {
+        url: "/assets/image/og-image.png",
+        width: 1200,
+        height: 630,
+        alt: `${siteName} — The Configuration File Converter`,
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: `${siteName} - The Configuration File Converter`,
+    description: siteDescription,
+    images: ["/assets/image/og-image.png"],
+  },
   icons: {
     icon: "/favicon.ico",
-  }
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-image-preview": "large",
+    },
+  },
+};
+
+export const viewport: Viewport = {
+  themeColor: [
+    { media: "(prefers-color-scheme: light)", color: "#ffffff" },
+    { media: "(prefers-color-scheme: dark)", color: "#0a0a0a" },
+  ],
 };
 
 export default function RootLayout({
