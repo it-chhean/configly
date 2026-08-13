@@ -23,7 +23,7 @@ const HeroSection = () => {
         <div>
           <h2 className="text-left text-4xl font-normal tracking-tight text-j-900 sm:text-5xl  dark:text-neutral-400">
             Convert your Config File{" "}
-            <span className="font-bold dark:text-white">Instantly.</span>
+            <span className="font-bold dark:text-white">Instantly</span>
           </h2>
           <p className="mt-4 max-w-lg text-left text-base text-muted dark:text-neutral-300">
             Fast, reliable configuration file conversion across platform.

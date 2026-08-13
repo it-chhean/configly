@@ -18,6 +18,9 @@ export const metadata: Metadata = {
   title: "Configly - The Configuration File Converter",
   description:
     "Convert YAML, JSON, TOML, ENV, Properties, and XML configuration files instantly. Fast, simple, and browser-based — your data stays on your device.",
+  icons: {
+    icon: "/icon.jpeg",
+  }
 };
 
 export default function RootLayout({

@@ -47,8 +47,9 @@ export default function ReferenceSection() {
           <p className="mt-2 flex items-center gap-1 text-xs text-muted sm:text-sm">
             Have a suggestion or feedback?{" "}Feel free to open a
             <a
-              href="/document/#resource-link"
+              href="https://github.com/it-chhean/configly"
               rel="noopener noreferrer"
+              title="github.com/it-chhean/configly"
               className="text-primary underline"
             >
             Pull Request.
