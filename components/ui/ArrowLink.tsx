@@ -10,7 +10,7 @@ export default function ArrowLink({
          rel="noopener noreferrer"
          className="group inline-flex items-center gap-1.5 text-primary transition-opacity duration-150 hover:opacity-100"
       >
-         <span className="text-lg hover-underline">
+         <span className="text-xl font-medium hover-underline">
             {name}
          </span>
       </a>
