@@ -53,7 +53,9 @@ export const metadata: Metadata = {
     description: siteDescription,
     images: [
       {
-        url: "/assets/image/og-image.png",
+        url: "/assets/image/og-image.jpeg",
+        width: 1200,
+        height: 630,
         alt: `${siteName} — The Configuration File Converter`,
       },
     ],
@@ -62,7 +64,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: `${siteName} - The Configuration File Converter`,
     description: siteDescription,
-    images: ["/assets/image/og-image.png"],
+    images: ["/assets/image/og-image.jpeg"],
   },
   icons: {
     icon: "/favicon.ico",
