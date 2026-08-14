@@ -1,8 +1,8 @@
-## Contributing to Configly
+#### Contributing to Configly
 
-Thanks for your interest in contributing to Configly 🎉 — a browser-based configuration file converter built with Next.js. This document explains how to set up the project locally and how to submit changes.
+Thanks for your interest in contributing to Configly a browser-based configuration file converter built with Next.js. This document explains how to set up the project locally and how to submit changes.
 
-## Table of Contents
+#### Table of Contents
 
 - [Code of Conduct](#code-of-conduct)
 - [Getting Started](#getting-started)
@@ -14,11 +14,11 @@ Thanks for your interest in contributing to Configly 🎉 — a browser-based co
 - [Suggesting Features](#suggesting-features)
 - [Adding a New Config Format](#adding-a-new-config-format)
 
-## Code of Conduct
+#### Code of Conduct
 
 Be respectful and constructive. Assume good intent, give clear and actionable feedback, and keep discussions focused on the project.
 
-## Getting Started
+#### Getting Started
 
 1. **Fork** the repository and clone your fork:
 
@@ -45,7 +45,7 @@ Be respectful and constructive. Assume good intent, give clear and actionable fe
 
 4. Open [http://localhost:3000](http://localhost:3000) and go to `/tools` to work with the converter.
 
-## Development Workflow
+#### Development Workflow
 
 1. Create a new branch off `main` for your change:
 
@@ -72,7 +72,7 @@ Be respectful and constructive. Assume good intent, give clear and actionable fe
 
 5. Push your branch and open a pull request against `main`.
 
-## Coding Guidelines
+#### Coding Guidelines
 
 - **TypeScript:** Keep types explicit for exported functions (see `lib/converter.ts` and `types/index.ts` for existing patterns). Avoid `any` where a real type is easy to express.
 - **Components:** Follow the existing folder split — `components/ui` for generic/reusable primitives, `components/feature` for converter-specific pieces, `components/sections` for landing-page sections, `components/layout` for Navbar/Footer.
@@ -81,7 +81,7 @@ Be respectful and constructive. Assume good intent, give clear and actionable fe
 - **Formatting:** Match the existing code style in the file you're editing. Run `bun run lint` and fix any warnings before opening a PR.
 - **No server round-trips for conversion:** Configly's core promise is that config data never leaves the browser. Any new conversion logic should stay client-side.
 
-## Commit Messages
+#### Commit Messages
 
 Use short, imperative commit messages, ideally following [Conventional Commits](https://www.conventionalcommits.org/):
 
@@ -92,7 +92,7 @@ docs: clarify local setup steps
 refactor: simplify XML root-tag handling
 ```
 
-## Submitting a Pull Request
+#### Submitting a Pull Request
 
 - Keep PRs focused — one feature or fix per PR is easier to review than a bundle of unrelated changes.
 - Fill out the [pull request template](./.github/PULL_REQUEST_TEMPLATE.md) completely, including how you tested your change.
@@ -100,7 +100,7 @@ refactor: simplify XML root-tag handling
 - Make sure `bun run lint` and `bun run build` both pass locally before requesting review.
 - Be responsive to review feedback — small follow-up commits are fine, you don't need to force-push for every change.
 
-## Reporting Bugs
+#### Reporting Bugs
 
 When filing a bug report, please include:
 
@@ -109,7 +109,7 @@ When filing a bug report, please include:
 - What you expected to happen vs. what actually happened
 - Browser/OS, if it seems relevant
 
-## Suggesting Features
+#### Suggesting Features
 
 Feature requests are welcome, especially:
 
@@ -119,7 +119,7 @@ Feature requests are welcome, especially:
 
 Open an issue describing the use case before starting significant work, so we can align on the approach first.
 
-## Adding a New Config Format
+#### Adding a New Config Format
 
 Most format work happens in [`lib/converter.ts`](./lib/converter.ts):
 
