@@ -64,29 +64,6 @@ Open [http://localhost:3000](http://localhost:3000) in your browser. The convert
 | `start` | Serve the production build |
 | `lint` | Run ESLint over the project |
 
-#### Project Structure
-
-```
-configly/
-├── app/
-│   ├── layout.tsx           # Root layout (Navbar/Footer + fonts)
-│   ├── page.tsx              # Landing page
-│   ├── not-found.tsx
-│   └── tools/
-│       └── page.tsx          # /tools — the converter UI
-├── components/
-│   ├── feature/               # ConvertButton, FeatureCard, InputField, UseCaseCard
-│   ├── layout/                 # Navbar, Footer
-│   ├── sections/                 # Landing page sections (Hero, Feature, FAQ, Reference, ...)
-│   └── ui/                        # Reusable UI primitives (accordion, arrow link, ...)
-├── data/                            # Static content: features, FAQs, use cases, reference data
-├── lib/
-│   ├── converter.ts                  # Core format-conversion engine
-│   └── utils.ts
-├── types/                              # Shared TypeScript types
-└── public/assets/                        # Images & static assets
-```
-
 The conversion logic (parsing and generating each format) is centralized in [`lib/converter.ts`](./lib/converter.ts) — that's the best place to start if you want to understand or extend how formats are handled.
 
 #### Contributing
