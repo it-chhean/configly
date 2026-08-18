@@ -17,7 +17,7 @@ const geistMono = Geist_Mono({
 const siteUrl = "https://configly.vercel.app";
 const siteName = "Configly";
 const siteDescription =
-  "Convert YAML, JSON, TOML, ENV, Properties, and XML configuration files instantly. Fast, simple, and browser-based — your data stays on your device.";
+  "Convert yaml, json, toml, env, properties, and xml configuration files instantly. Fast, simple, and browser-based — your data stays on your device.";
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
