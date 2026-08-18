@@ -14,7 +14,7 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
-const siteUrl = "https://configly.vercel.app";
+const siteUrl = "https://configly.site";
 const siteName = "Configly";
 const siteDescription =
   "Convert yaml, json, toml, env, properties, and xml configuration files instantly. Fast, simple, and browser-based — your data stays on your device.";
