@@ -6,8 +6,7 @@ const Navbar = () => {
     <header className="border-b ">
       <nav className='mx-auto flex h-14 max-w-5xl items-center justify-between px-6 '>
         <div className='flex items-center gap-2 cursor-pointer'>
-        <img src="/favicon.ico" alt="logo" className="mb-[-3px] h-6 w-6" />
-        <ArrowLink href="/" name="configly"/>
+        <ArrowLink href="/" name="Configly"/>
         </div>
         <div className='flex items-center sm:flex gap-6 cursor-pointer'>
             <Link href="/documents" className='no-underline text-sm hover:underline'>Docs</Link>
