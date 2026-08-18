@@ -45,7 +45,7 @@ const Footer = () => {
                   href="/"
                   className="scroll-mt-55 duration-200 hover:text-primary hover:underline"
                 >
-                  Back to Home
+                  Return to Home
                 </a>
             )}
         </div>
