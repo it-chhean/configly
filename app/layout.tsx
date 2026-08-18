@@ -28,6 +28,7 @@ export const metadata: Metadata = {
   description: siteDescription,
   applicationName: siteName,
   keywords: [
+    "www configly site convert configuration files",
     "converter",
     "yaml",
     "json",
