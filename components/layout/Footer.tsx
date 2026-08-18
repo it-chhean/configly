@@ -25,12 +25,6 @@ const Footer = () => {
                   Docs
                 </Link>
 
-                <Link
-                  href="/#faq-link"
-                  className="duration-200 hover:text-primary hover:underline"
-                >
-                  FAQs
-                </Link>
 
                 <Link
                   href="/documents#privacy-link"
@@ -41,12 +35,20 @@ const Footer = () => {
                 <span>©2026 Configly</span>
               </>
             ) : (
+                <>
+                <Link
+                  href="/#faq-link"
+                  className="duration-200 hover:text-primary hover:underline"
+                >
+                  FAQs
+                </Link>
                 <a
                   href="/"
                   className="scroll-mt-55 duration-200 hover:text-primary hover:underline"
                 >
                   Return to Home
                 </a>
+                </>
             )}
         </div>
       </div>
