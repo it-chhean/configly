@@ -6,7 +6,7 @@ const Navbar = () => {
     <header className="border-b ">
       <nav className='mx-auto flex h-14 max-w-5xl items-center justify-between px-6 '>
         <div className='flex items-center gap-2 cursor-pointer'>
-        <img src="/assets/image/cf.png" alt="" className="w-[30px] rounded-xs h-[30x]"/>
+        <img src="/assets/image/cf..svg" alt="" className="w-[34px] rounded-xs h-[34x]"/>
         <ArrowLink href="/" name="Configly"/>
         </div>
         <div className='flex items-center sm:flex gap-6 cursor-pointer'>
