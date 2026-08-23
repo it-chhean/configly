@@ -75,9 +75,6 @@ export const metadata: Metadata = {
     description: siteDescription,
     images: ["/assets/image/og-image.jpeg"],
   },
-  icons: {
-    icon: "/favicon.ico",
-  },
   robots: {
     index: true,
     follow: true,
