@@ -106,6 +106,9 @@ export default function RootLayout({
       lang="en"
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
     >
+    <head>
+      <link rel="icon"  href="/favicon.ico"/>
+    </head>
     <body className="h-screen scroll-smooth">
       <Navbar/>
         {children}
