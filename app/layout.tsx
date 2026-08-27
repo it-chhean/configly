@@ -28,24 +28,95 @@ export const metadata: Metadata = {
   description: siteDescription,
   applicationName: siteName,
   keywords: [
-    "www configly site convert configuration files",
-    "converter",
-    "yaml",
-    "json",
-    "toml",
-    "env",
-    "properties",
-    "xml",
+    // Main intent
     "configuration file converter",
     "config file converter",
     "configuration converter",
+    "config converter",
+    "online configuration file converter",
+    "online config converter",
+    "free configuration file converter",
+    "configuration format converter",
+    "configuration file conversion",
+    "convert configuration files",
+    "convert config files online",
+
+    // YAML
+    "YAML converter",
+    "YAML file converter",
+    "YAML configuration converter",
     "YAML to JSON converter",
+    "YAML to Properties converter",
+    "YAML to TOML converter",
+    "YAML to XML converter",
+    "YAML to ENV converter",
+    "YAML to INI converter",
+
+    // JSON
+    "JSON converter",
+    "JSON file converter",
+    "JSON configuration converter",
     "JSON to YAML converter",
+    "JSON to TOML converter",
+    "JSON to XML converter",
+    "JSON to ENV converter",
+    "JSON to Properties converter",
+    "JSON to INI converter",
+
+    // TOML
+    "toml",
     "TOML converter",
-    "XML converter",
+    "TOML file converter",
+    "TOML configuration converter",
+    "TOML to YAML converter",
+    "TOML to JSON converter",
+    "TOML to XML converter",
+    "TOML to ENV converter",
+    "TOML to Properties converter",
+
+    // ENV
+    "env",
     "ENV file converter",
+    "ENV converter",
+    "environment file converter",
+    "environment variable file converter",
+    "ENV to YAML converter",
+    "ENV to JSON converter",
+    "ENV to TOML converter",
+    "ENV to XML converter",
+    "ENV to Properties converter",
+
+    // Java Properties
     "Java properties converter",
+    "Java properties file converter",
+    "properties file converter",
+    "application.properties converter",
+    "Spring Boot properties converter",
+    "Properties to YAML converter",
+    "Properties to JSON converter",
+    "Properties to TOML converter",
+    "Properties to XML converter",
+    "Properties to ENV converter",
+
+    // XML
+    "xml",
+    "XML converter",
+    "XML file converter",
+    "XML configuration converter",
+    "XML to YAML converter",
+    "XML to JSON converter",
+    "XML to TOML converter",
+    "XML to ENV converter",
+    "XML to Properties converter",
+
+    // Developer intent
+    "convert tools",
     "developer tools",
+    "online developer tools",
+    "developer configuration tools",
+    "configuration tools for developers",
+    "online configuration tools",
+    "free developer tools",
   ],
   creator: siteName,
   publisher: siteName,
@@ -103,11 +174,11 @@ export default function RootLayout({
       lang="en"
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
     >
-    <body className="h-screen scroll-smooth">
-      <Navbar/>
+      <body className="h-screen scroll-smooth">
+        <Navbar />
         {children}
-      <Footer/>
-    </body>
+        <Footer />
+      </body>
     </html>
   );
 }
