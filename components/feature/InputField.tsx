@@ -1,6 +1,13 @@
 "use client";
 
-import { useState, useRef, useCallback, useEffect, type FC } from "react";
+import {
+  startTransition,
+  useState,
+  useRef,
+  useCallback,
+  useEffect,
+  type FC,
+} from "react";
 import {
   ChevronDown,
   Copy,
@@ -10,10 +17,16 @@ import {
   ArrowRightLeft,
   AlertCircle,
 } from "lucide-react";
-import Link from "next/link";
 import { convertFormat, type FormatLanguage } from "@/lib/converter";
 
-const LANGUAGES: FormatLanguage[] = ["Property", "Yaml", "Xml", "Json", "Toml", "Env"];
+const LANGUAGES: FormatLanguage[] = [
+  "Property",
+  "Yaml",
+  "Xml",
+  "Json",
+  "Toml",
+  "Env",
+];
 
 const SAMPLE_PROPERTIES = `# Server Configuration
 server.port=8080
@@ -27,36 +40,105 @@ spring.datasource.password=secret_password
 spring.datasource.hikari.maximum-pool-size=10
 `;
 
+const SAMPLE_INPUTS: Record<FormatLanguage, string> = {
+  Property: SAMPLE_PROPERTIES,
+  Yaml: `server:
+  port: 8080
+  host: 127.0.0.1
+spring:
+  application:
+    name: converter-service`,
+  Xml: `<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+  <server>
+    <port>8080</port>
+    <host>127.0.0.1</host>
+  </server>
+</configuration>`,
+  Json: `{
+  "server": {
+    "port": 8080,
+    "host": "127.0.0.1"
+  },
+  "environment": "development"
+}`,
+  Toml: `[server]
+port = 8080
+host = "127.0.0.1"
+
+[spring.application]
+name = "converter-service"`,
+  Env: `SERVER_PORT=8080
+SERVER_HOST=127.0.0.1
+SPRING_APPLICATION_NAME=converter-service`,
+};
+
 interface CursorPosition {
   line: number;
   col: number;
 }
 
-const InputField: FC = () => {
-  const [inputCode, setInputCode] = useState<string>(SAMPLE_PROPERTIES);
+interface InputFieldProps {
+  initialFrom?: FormatLanguage;
+  initialTo?: FormatLanguage;
+}
+
+const InputField: FC<InputFieldProps> = ({
+  initialFrom = "Property",
+  initialTo = "Yaml",
+}) => {
+  const [inputCode, setInputCode] = useState<string>(
+    SAMPLE_INPUTS[initialFrom],
+  );
   const [outputCode, setOutputCode] = useState<string>("");
-  const [fromLang, setFromLang] = useState<FormatLanguage>("Property");
-  const [toLang, setToLang] = useState<FormatLanguage>("Yaml");
+  const [fromLang, setFromLang] = useState<FormatLanguage>(initialFrom);
+  const [toLang, setToLang] = useState<FormatLanguage>(initialTo);
   const [fromLangOpen, setFromLangOpen] = useState<boolean>(false);
   const [toLangOpen, setToLangOpen] = useState<boolean>(false);
 
-  const [inputCursor, setInputCursor] = useState<CursorPosition>({ line: 1, col: 1 });
-  const [outputCursor, setOutputCursor] = useState<CursorPosition>({ line: 1, col: 1 });
+  const [inputCursor, setInputCursor] = useState<CursorPosition>({
+    line: 1,
+    col: 1,
+  });
+  const [outputCursor, setOutputCursor] = useState<CursorPosition>({
+    line: 1,
+    col: 1,
+  });
   const [copied, setCopied] = useState<boolean>(false);
   const [errorMsg, setErrorMsg] = useState<string | null>(null);
 
   const inputTextareaRef = useRef<HTMLTextAreaElement>(null);
   const outputTextareaRef = useRef<HTMLTextAreaElement>(null);
 
+  useEffect(() => {
+    const params = new URLSearchParams(window.location.search);
+    const requestedFrom = params.get("from") as FormatLanguage | null;
+    const requestedTo = params.get("to") as FormatLanguage | null;
+
+    startTransition(() => {
+      if (requestedFrom && LANGUAGES.includes(requestedFrom)) {
+        setFromLang(requestedFrom);
+        setInputCode(SAMPLE_INPUTS[requestedFrom]);
+      }
+      if (requestedTo && LANGUAGES.includes(requestedTo)) {
+        setToLang(requestedTo);
+      }
+    });
+  }, []);
+
   // Perform format conversion whenever inputCode, fromLang, or toLang changes
   useEffect(() => {
     if (!inputCode.trim()) {
-      setOutputCode(' ');
+      setOutputCode(" ");
       setErrorMsg(null);
       return;
     }
 
-    const { success, result, error } = convertFormat(inputCode, fromLang, toLang);
+    const { success, result, error } = convertFormat(
+      inputCode,
+      fromLang,
+      toLang,
+    );
     if (success) {
       setOutputCode(result);
       setErrorMsg(null);
@@ -66,15 +148,21 @@ const InputField: FC = () => {
   }, [inputCode, fromLang, toLang]);
 
   const updateCursorPosition = useCallback(
-    (ref: React.RefObject<HTMLTextAreaElement | null>, setCursor: (pos: CursorPosition) => void) => {
+    (
+      ref: React.RefObject<HTMLTextAreaElement | null>,
+      setCursor: (pos: CursorPosition) => void,
+    ) => {
       const el = ref.current;
       if (!el) return;
       const pos = el.selectionStart;
       const before = el.value.slice(0, pos);
       const lines = before.split("\n");
-      setCursor({ line: lines.length, col: lines[lines.length - 1].length + 1 });
+      setCursor({
+        line: lines.length,
+        col: lines[lines.length - 1].length + 1,
+      });
     },
-    []
+    [],
   );
 
   const handleCopyOutput = async () => {
@@ -131,12 +219,12 @@ const InputField: FC = () => {
         break;
       case "Yaml":
         setInputCode(
-          `server:\n  port: 8080\n  host: 127.0.0.1\n  servlet:\n    context-path: /api/v1\nspring:\n  application:\n    name: converter-service\n  profiles:\n    active: development`
+          `server:\n  port: 8080\n  host: 127.0.0.1\n  servlet:\n    context-path: /api/v1\nspring:\n  application:\n    name: converter-service\n  profiles:\n    active: development`,
         );
         break;
       case "Xml":
         setInputCode(
-          `<?xml version="1.0" encoding="UTF-8"?>\n<configuration>\n  <server>\n    <port>8080</port>\n    <host>127.0.0.1</host>\n  </server>\n  <spring>\n    <application>\n      <name>converter-service</name>\n    </application>\n  </spring>\n</configuration>`
+          `<?xml version="1.0" encoding="UTF-8"?>\n<configuration>\n  <server>\n    <port>8080</port>\n    <host>127.0.0.1</host>\n  </server>\n  <spring>\n    <application>\n      <name>converter-service</name>\n    </application>\n  </spring>\n</configuration>`,
         );
         break;
       case "Json":
@@ -154,18 +242,18 @@ const InputField: FC = () => {
               },
             },
             null,
-            2
-          )
+            2,
+          ),
         );
         break;
       case "Toml":
         setInputCode(
-          `[server]\nport = 8080\nhost = "127.0.0.1"\n\n[server.servlet]\ncontext-path = "/api/v1"\n\n[spring.application]\nname = "converter-service"`
+          `[server]\nport = 8080\nhost = "127.0.0.1"\n\n[server.servlet]\ncontext-path = "/api/v1"\n\n[spring.application]\nname = "converter-service"`,
         );
         break;
       case "Env":
         setInputCode(
-          `SERVER_PORT=8080\nSERVER_HOST=127.0.0.1\nSERVER_SERVLET_CONTEXT_PATH=/api/v1\nSPRING_APPLICATION_NAME=converter-service\nSPRING_PROFILES_ACTIVE=development`
+          `SERVER_PORT=8080\nSERVER_HOST=127.0.0.1\nSERVER_SERVLET_CONTEXT_PATH=/api/v1\nSPRING_APPLICATION_NAME=converter-service\nSPRING_PROFILES_ACTIVE=development`,
         );
         break;
     }
@@ -238,12 +326,11 @@ const InputField: FC = () => {
                         type="button"
                         onClick={() => {
                           setFromLang(l);
+                          setInputCode(SAMPLE_INPUTS[l]);
                           setFromLangOpen(false);
                         }}
                         className={`block w-full px-3 py-1.5 text-left text-xs text-primary hover:bg-stone-100 ${
-                          fromLang === l
-                            ? "bg-stone-50 font-semibold"
-                            : ""
+                          fromLang === l ? "bg-stone-50 font-semibold" : ""
                         }`}
                       >
                         {l}
@@ -274,26 +361,17 @@ const InputField: FC = () => {
               value={inputCode}
               onChange={(e) => setInputCode(e.target.value)}
               onKeyUp={() =>
-                updateCursorPosition(
-                  inputTextareaRef,
-                  setInputCursor
-                )
+                updateCursorPosition(inputTextareaRef, setInputCursor)
               }
               onClick={() =>
-                updateCursorPosition(
-                  inputTextareaRef,
-                  setInputCursor
-                )
+                updateCursorPosition(inputTextareaRef, setInputCursor)
               }
               onSelect={() =>
-                updateCursorPosition(
-                  inputTextareaRef,
-                  setInputCursor
-                )
+                updateCursorPosition(inputTextareaRef, setInputCursor)
               }
               spellCheck={false}
               wrap="soft"
-              placeholder={`Paste or type your ${fromLang} configuration here...`}
+              placeholder={SAMPLE_INPUTS[fromLang]}
               className="min-h-0 min-w-0 flex-1 resize-none border-none bg-transparent pt-3 pr-4 pb-3 font-mono text-sm leading-6 text-primary outline-none placeholder:text-stone-400"
             />
           </div>
@@ -347,9 +425,7 @@ const InputField: FC = () => {
                           setToLangOpen(false);
                         }}
                         className={`block w-full px-3 py-1.5 text-left text-xs text-primary hover:bg-stone-100 ${
-                          toLang === l
-                            ? "bg-stone-100 font-semibold"
-                            : ""
+                          toLang === l ? "bg-stone-100 font-semibold" : ""
                         }`}
                       >
                         {l}
@@ -373,9 +449,7 @@ const InputField: FC = () => {
                 {copied ? (
                   <span className="flex items-center gap-1 text-xs font-medium text-emerald-400">
                     <Check size={14} />
-                    <span className="hidden sm:inline">
-                      Copied!
-                    </span>
+                    <span className="hidden sm:inline">Copied!</span>
                   </span>
                 ) : (
                   <Copy size={15} />
@@ -402,22 +476,13 @@ const InputField: FC = () => {
               value={outputCode}
               readOnly
               onKeyUp={() =>
-                updateCursorPosition(
-                  outputTextareaRef,
-                  setOutputCursor
-                )
+                updateCursorPosition(outputTextareaRef, setOutputCursor)
               }
               onClick={() =>
-                updateCursorPosition(
-                  outputTextareaRef,
-                  setOutputCursor
-                )
+                updateCursorPosition(outputTextareaRef, setOutputCursor)
               }
               onSelect={() =>
-                updateCursorPosition(
-                  outputTextareaRef,
-                  setOutputCursor
-                )
+                updateCursorPosition(outputTextareaRef, setOutputCursor)
               }
               wrap="soft"
               placeholder={`Converted ${toLang} output will appear here...`}
@@ -452,6 +517,6 @@ const InputField: FC = () => {
       </div>
     </section>
   );
-}
+};
 
 export default InputField;

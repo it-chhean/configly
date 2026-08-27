@@ -22,7 +22,7 @@ const siteDescription =
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
   title: {
-    default: `${siteName} - The Configuration File Converter`,
+    default: `Config File Converter - Convert YAML, JSON, TOML, ENV & Properties | Configly`,
     template: `%s | ${siteName}`,
   },
   description: siteDescription,
@@ -169,6 +169,16 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    name: "Configly",
+    url: "https://configly.site",
+    applicationCategory: "DeveloperApplication",
+    operatingSystem: "Web",
+    description:
+      "Online configuration file converter for YAML, JSON, TOML, ENV, Properties and XML.",
+  };
   return (
     <html
       lang="en"
@@ -178,6 +188,12 @@ export default function RootLayout({
         <Navbar />
         {children}
         <Footer />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(jsonLd),
+          }}
+        />
       </body>
     </html>
   );
