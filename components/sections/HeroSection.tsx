@@ -5,8 +5,8 @@ const HeroSection = () => {
   return (
     <section className="relative mx-auto flex w-full max-w-5xl items-center justify-center">
       <DottedGlowBackground
-        className="pointer-events-none mask-radial-to-90% mask-radial-at-center opacity-25 dark:opacity-100"
-        opacity={1}
+        className="pointer-events-none mask-radial-to-90% mask-radial-at-center opacity-60 "
+        opacity={3}
         gap={10}
         radius={1.6}
         colorLightVar="--color-neutral-500"
@@ -19,7 +19,7 @@ const HeroSection = () => {
         speedScale={1}
       />
  
-      <div className="relative z-10 w-full space-y-6 my-16 md:my-20 sm:my-30 md:flex-row">
+      <div className="relative z-10 w-full space-y-6 my-30 md:my-30 sm:my-30 md:flex-row">
         <div>
           <h2 className="text-left text-4xl font-normal tracking-tight text-j-900 sm:text-5xl  dark:text-neutral-400">
             Convert your Config File{" "}
