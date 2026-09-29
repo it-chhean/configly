@@ -1,4 +1,14 @@
-#### Configly
+<p align="center">
+  <a href="https://configly.site">
+    <img alt="pi logo" src="https://configly.site/assets/image/cf-logo.png" width="50">
+  </a>
+</p>
+<p align="center">
+  "A secure environment variable converter designed to protect your sensitive credentials."
+</p>
+
+
+## Configly
 Configly is a fast, browser-based configuration file converter. Paste or upload a config file and instantly convert it between json, yaml, xml, toml, java properties, and env — no installs, no server uploads, no account required.
 
 #### Table of Contents
@@ -8,7 +18,6 @@ Configly is a fast, browser-based configuration file converter. Paste or upload 
 - [Tech Stack](#tech-stack)
 - [Getting Started](#getting-started)
 - [Available Scripts](#available-scripts)
-- [Project Structure](#project-structure)
 - [Contributing](#contributing)
 - [License](#license)
 
