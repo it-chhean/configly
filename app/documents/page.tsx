@@ -1,7 +1,7 @@
 import ArticleSection from "@/components/sections/ArticleSection"
 import ConversationSection from "@/components/sections/ConversationSection"
 import ReferenceSection from "@/components/sections/ReferenceSection"
-import { aboutItem, howItWork, privacyAndSecurity } from "@/data/documents"
+import { aboutItem, howItWork, privacyAndSecurity } from "@/data/docs"
 
 const page = () => {
   return (
