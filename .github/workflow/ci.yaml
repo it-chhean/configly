@@ -2,9 +2,21 @@ name: CI
 
 on:
   pull_request:
-    branches: [main]
+    branches:
+     - main
+    path-ignore:
+      - '**.md'          
+      - 'LICENSE'        
+      - '.gitignore'     
+      - 'docs/**'
   push:
-    branches: [main]
+    branches:
+      -main
+    paths-ignore:
+      - '**.md'          
+      - 'LICENSE'        
+      - '.gitignore'     
+      - 'docs/**'
 
 jobs:
   lint-typecheck-build:
